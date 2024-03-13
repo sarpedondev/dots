@@ -19,7 +19,31 @@
       package = (pkgs.qogir-icon-theme.override { colorVariants = [ "dark" ]; themeVariants = [ "default" ]; });
     };
   };
-  
+
+  home.packages = with pkgs; [
+    python3
+    neovim
+    kitty-themes
+    roboto
+    (nerdfonts.override { fonts = [ "RobotoMono" ]; })
+    vesktop
+    grimblast
+    vlc
+    firefox
+    gedit
+    gimp
+    spotify
+    davinci-resolve
+    dolphin
+    jetbrains.pycharm-professional
+    jetbrains.idea-ultimate
+    jetbrains.clion
+    android-studio
+    docker-compose
+    libsForQt5.polkit-kde-agent
+    github-copilot-intellij-agent
+  ];
+
   programs.gpg.enable = true;
 
   nixpkgs.config.allowUnfree = true;

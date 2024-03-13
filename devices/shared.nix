@@ -1,14 +1,17 @@
 { config, pkgs, ...}: {
-  boot.plymouth.enable = true;
   boot.kernelParams = [ "quiet" "splash" ];
   boot.supportedFilesystems = [ "ntfs" ];
+
+  boot.plymouth.enable = true;
+  
   boot.loader.grub.enable = true;
   boot.loader.grub.useOSProber = true;
-  
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.efi.canTouchEfiVariables = true;
+
   time.timeZone = "Europe/Berlin";
-
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.UTF-8";
     LC_IDENTIFICATION = "de_DE.UTF-8";
@@ -25,10 +28,6 @@
   
   console.keyMap = "de";
   
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.efi.canTouchEfiVariables = true;
-
   services.printing.enable = true;
 
   networking.networkmanager.enable = true;
@@ -37,10 +36,12 @@
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.displayManager.sddm.wayland.enable = true;
   services.xserver.displayManager.sddm.theme = "catppuccin-mocha";
-  
+  services.xserver.displayManager.sessionPackages = [ pkgs.hyprland ];
+
   programs.dconf.enable = true;
 
   environment.systemPackages = [
+    # sddm
     config.nur.repos.MtFBella109.catppuccin-mocha
   ];
 
@@ -61,7 +62,6 @@
   };
   
   # If Hyprland is only installed via home-manager we need this to generate a session file for sddm
-  services.xserver.displayManager.sessionPackages = [ pkgs.hyprland ];
 
   virtualisation.docker.enable = true;
 
