@@ -10,7 +10,7 @@
 	"SUPER, W, togglefloating"
 	"ALT, space, fullscreen"
 	"SUPER, T, exec, kitty"
-	", print, exec, grimblast copy area"
+	", print, exec, grimblast copy area --freeze"
 	"SUPER, V, exec, pkill -x rofi || TODO clipboard"
 	"SUPER, left, movefocus, l"
 	"SUPER, right, movefocus, r"
