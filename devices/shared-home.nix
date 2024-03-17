@@ -42,6 +42,7 @@
     docker-compose
     libsForQt5.polkit-kde-agent
     github-copilot-intellij-agent
+    gparted
   ];
 
   programs.gpg.enable = true;
