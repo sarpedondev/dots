@@ -20,10 +20,17 @@
     };
   };
 
+  xdg.portal = {
+    enable = true;
+    config = { common = { default = [      "gtk"    ]; }; };
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  };
+
   home.packages = with pkgs; [
     python3
     neovim
     kitty-themes
+    hyprpaper
     roboto
     (nerdfonts.override { fonts = [ "RobotoMono" ]; })
     vesktop
@@ -34,7 +41,8 @@
     gimp
     spotify
     davinci-resolve
-    dolphin
+    gnome.nautilus
+    gnome.sushi
     jetbrains.pycharm-professional
     jetbrains.idea-ultimate
     jetbrains.clion
@@ -42,7 +50,6 @@
     docker-compose
     libsForQt5.polkit-kde-agent
     github-copilot-intellij-agent
-    gparted
   ];
 
   programs.gpg.enable = true;
