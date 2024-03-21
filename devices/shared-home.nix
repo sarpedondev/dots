@@ -43,6 +43,7 @@
     davinci-resolve
     gnome.nautilus
     gnome.sushi
+    #gnome.gnome-disk-utility
     jetbrains.pycharm-professional
     jetbrains.idea-ultimate
     jetbrains.clion

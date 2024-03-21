@@ -7,6 +7,7 @@
     ../../configs/rofi.nix
     ../../configs/kitty.nix
     ../../configs/git.nix
+    ../../configs/java.nix
   ];
 
   home.packages = with pkgs; [

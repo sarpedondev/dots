@@ -30,6 +30,8 @@
   
   services.printing.enable = true;
 
+  services.gvfs.enable = true;
+
   networking.networkmanager.enable = true;
   
   services.xserver.enable = true;
