@@ -45,6 +45,7 @@
   environment.systemPackages = [
     # sddm
     config.nur.repos.MtFBella109.catppuccin-mocha
+    config.nur.repos.milahu.recaf-bin
   ];
 
   sound.enable = true;
