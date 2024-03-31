@@ -61,7 +61,7 @@
   users.users.tom = {
     isNormalUser = true;
     description = "Tom";
-    extraGroups = [ "networkmanager" "wheel" "docker" "vboxusers" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "vboxusers" "adbusers" ];
   };
   
   # If Hyprland is only installed via home-manager we need this to generate a session file for sddm
@@ -74,6 +74,20 @@
   #virtualisation.virtualbox.host.enableExtensionPack = true;
   #virtualisation.virtualbox.guest.enable = true;
   #virtualisation.virtualbox.guest.x11 = true;
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  };
+
+  programs.adb.enable = true;
+
 
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "23.11";
