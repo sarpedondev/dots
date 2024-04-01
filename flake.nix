@@ -10,27 +10,16 @@
     };
   };
 
-  outputs = { self, nixpkgs, nur, home-manager, ... }: {
-    nixosConfigurations = {
-      neon = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          home-manager.nixosModules.home-manager
-	      nur.nixosModules.nur
-          ./hosts/neon/configuration.nix
-          { home-manager.users.tom = import ./hosts/neon/home.nix; }
-        ];
-      };
-  
-      xenon = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          home-manager.nixosModules.home-manager
-          nur.nixosModules.nur
-          ./hosts/xenon/configuration.nix
-          { home-manager.users.tom = import ./hosts/xenon/home.nix; }
-        ];
+  outputs = { nixpkgs, ... }@inputs: 
+    let 
+      overlays = [
+        inputs.nur.overlay
+      ];
+    in
+    {
+      nixosConfigurations = {
+        neon = import ./hosts/neon { inherit inputs overlays; };
+        xenon = import ./hosts/xenon { inherit inputs overlays; };
       };
     };
-  };
 }

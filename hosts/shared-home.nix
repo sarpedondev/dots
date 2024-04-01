@@ -33,6 +33,7 @@
     hyprpaper
     hyprpicker
     wl-clipboard
+    nodejs
     roboto
     (nerdfonts.override { fonts = [ "RobotoMono" ]; })
     vesktop
