@@ -1,0 +1,8 @@
+{ ... }: 
+{
+  imports = [
+    ./localization
+    ./nix
+    ./user
+  ];
+}

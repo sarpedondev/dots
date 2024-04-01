@@ -11,12 +11,11 @@
   };
 
   outputs = { nixpkgs, ... }@inputs: 
-    let 
+    let
       overlays = [
         inputs.nur.overlay
       ];
-    in
-    {
+    in {
       nixosConfigurations = {
         neon = import ./hosts/neon { inherit inputs overlays; };
         xenon = import ./hosts/xenon { inherit inputs overlays; };

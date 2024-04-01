@@ -1,23 +1,29 @@
-{ pkgs, config, ... }: {
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi-wayland;
-    extraConfig = {
-      modi = "drun";
-      icon-theme = "Oranchelo";
-      show-icons = true;
-      terminal = "kitty";
-      drun-display-format = "{icon} {name}";
-      location = 0;
-      disable-history = false;
-      hide-scrollbar = true;
-      display-drun = "   Apps ";
-      display-network = " 󰤨  Network";
-      sidebar-mode = true;
-    };
-    
-    theme =
-      let
+{ pkgs, config, lib, ... }: 
+{
+  options = {
+    rofi.enable = lib.mkEnableOption "Enables rofi";
+  };
+
+  config = lib.mkIf config.rofi.enable {
+    programs.rofi = {
+      enable = true;
+      package = pkgs.rofi-wayland;
+      extraConfig = {
+        modi = "drun";
+        icon-theme = "Oranchelo";
+        show-icons = true;
+        terminal = "kitty";
+        drun-display-format = "{icon} {name}";
+        location = 0;
+        disable-history = false;
+        hide-scrollbar = true;
+        display-drun = "   Apps ";
+        display-network = " 󰤨  Network";
+        sidebar-mode = true;
+      };
+
+      theme =
+        let
         inherit (config.lib.formats.rasi) mkLiteral;
       in {
         "*" = {
@@ -131,5 +137,6 @@
           background-color = mkLiteral "@bg-col-light";
         };
       };
+    };
   };
 }
