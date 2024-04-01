@@ -7,4 +7,6 @@
     ../../configs/kitty.nix
     ../../configs/git.nix
   ];
+  hyprland.enable = true;
+  hyprland.monitor = "LVDS-1,1366x768@60,0x0,1";
 }

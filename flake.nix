@@ -16,9 +16,9 @@
         system = "x86_64-linux";
         modules = [
           home-manager.nixosModules.home-manager
-	  nur.nixosModules.nur
-          ./devices/neon/configuration.nix
-          { home-manager.users.tom = import ./devices/neon/home.nix; }
+	      nur.nixosModules.nur
+          ./hosts/neon/configuration.nix
+          { home-manager.users.tom = import ./hosts/neon/home.nix; }
         ];
       };
   
@@ -27,8 +27,8 @@
         modules = [
           home-manager.nixosModules.home-manager
           nur.nixosModules.nur
-          ./devices/xenon/configuration.nix
-          { home-manager.users.tom = import ./devices/xenon/home.nix; }
+          ./hosts/xenon/configuration.nix
+          { home-manager.users.tom = import ./hosts/xenon/home.nix; }
         ];
       };
     };

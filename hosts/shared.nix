@@ -27,7 +27,8 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   console.keyMap = "de";
-  
+   hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # 
   services.printing.enable = true;
 
   services.gvfs.enable = true;
@@ -87,7 +88,6 @@
   };
 
   programs.adb.enable = true;
-
 
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "23.11";
