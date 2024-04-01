@@ -128,7 +128,7 @@ inputs.nixpkgs.lib.nixosSystem {
         git.enable = true;
         java.enable = true;
 
-        #audioo.enable = true;
+        audio.enable = true;
         bluetooth.enable = true;
         plymouth.enable = true;
       }
