@@ -1,7 +1,7 @@
 { pkgs, config, lib, ... }:
 {
   options = {
-    sddm.enable = mkEnableOptions "Enables sddm";
+    sddm.enable = lib.mkEnableOption "Enables sddm";
   };
 
   config = lib.mkIf config.sddm.enable {

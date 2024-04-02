@@ -4,6 +4,7 @@
   };
 
   config = lib.mkIf config.waybar.enable {
+        home-manager.users.tom = {
     programs.waybar = {
       enable = true;
       settings = [{
@@ -340,6 +341,7 @@ padding: 0px;
   padding-left: 3px;
 }
 '';
+};
 };
 };
 }

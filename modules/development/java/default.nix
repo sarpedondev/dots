@@ -7,11 +7,15 @@ in
     java.enable = lib.mkEnableOption "Installs jdk 8, 17, and latest lts release";
   };
 
-  config = mkIf config.java.enable {
+  config = lib.mkIf config.java.enable {
+    home-manager.users.tom = {
+
+    
     home.sessionPath = [ "$HOME/.jdks" ];
     home.file = (builtins.listToAttrs (builtins.map (jdk: {
             name = ".jdks/${jdk.version}";
             value = { source = jdk; };
             }) additionalJDKs));
+  };
   };
 }

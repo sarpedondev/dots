@@ -5,6 +5,7 @@
   };
 
   config = lib.mkIf config.git.enable {
+        home-manager.users.tom = {
     programs.git = {
       enable = true;
       userName = "TomJuri";
@@ -14,5 +15,6 @@
         signByDefault = true;
       };
     };
+  };
   };
 }

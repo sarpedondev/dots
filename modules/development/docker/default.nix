@@ -1,7 +1,7 @@
 { pkgs, config, lib, ... }:
 {
   options = {
-    docker.enable = lib.mkEnableOptions "Enables docker";
+    docker.enable = lib.mkEnableOption "Enables docker";
   };
 
   config = lib.mkIf config.docker.enable {

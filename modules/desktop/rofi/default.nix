@@ -5,6 +5,7 @@
   };
 
   config = lib.mkIf config.rofi.enable {
+        home-manager.users.tom = {
     programs.rofi = {
       enable = true;
       package = pkgs.rofi-wayland;
@@ -24,7 +25,7 @@
 
       theme =
         let
-        inherit (config.lib.formats.rasi) mkLiteral;
+        inherit (config.home-manager.users.tom.lib.formats.rasi) mkLiteral;
       in {
         "*" = {
           bg-col = mkLiteral "#1e1e2e";
@@ -138,5 +139,6 @@
         };
       };
     };
+  };
   };
 }

@@ -1,10 +1,11 @@
 { pkgs, config, lib, ... }: 
 {
   options = {
-    kitty.enable = true;
+    kitty.enable = lib.mkEnableOption "Enables kitty";
   };
 
   config = lib.mkIf config.kitty.enable {
+        home-manager.users.tom = {
     programs.kitty = {
       enable = true;
       theme = "Catppuccin-Mocha";
@@ -19,5 +20,6 @@
         confirm_os_window_close = 0;
       };
     };
+  };
   };
 }

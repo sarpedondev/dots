@@ -1,5 +1,5 @@
 { ... }: {
-  inputs = [
+  imports = [
     ./applications
     ./desktop
     ./development

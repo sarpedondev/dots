@@ -7,9 +7,11 @@
   };
 
   config = lib.mkIf config.hyprpaper.enable {
-    xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = ${config.hyprpaper.wallpaper}
-    wallpaper = ${config.hyprpaper.monitor},${config.hyprpaper.wallpaper}
-    '';
+    home-manager.users.tom = {
+      xdg.configFile."hypr/hyprpaper.conf".text = ''
+        preload = ${config.hyprpaper.wallpaper}
+      wallpaper = ${config.hyprpaper.monitor},${config.hyprpaper.wallpaper}
+      '';
+    };
   };
 }

@@ -1,9 +1,4 @@
 { inputs, overlays, ... }:
-let
-lib = inputs.nixpkgs.lib;
-config = inputs.nixpkgs.config;
-pkgs = inputs.nixpkgs.pkgs;
-in
 inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux"; 
   modules = [
@@ -31,8 +26,8 @@ inputs.nixpkgs.lib.nixosSystem {
         { device = "/dev/disk/by-uuid/c79ff706-3ef0-41bb-beb1-a69c5eb42120"; }
         ];
 
-        nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-        hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+        nixpkgs.hostPlatform = inputs.nixpkgs.lib.mkDefault "x86_64-linux";
+        hardware.cpu.amd.updateMicrocode = true;
 
         # random stuff i havent categorized yet
         services.printing.enable = true;
@@ -42,69 +37,71 @@ inputs.nixpkgs.lib.nixosSystem {
         services.mullvad-vpn.enable = true;
         # HIP, ROCM and opengl
         hardware.opengl.enable = true;
-        systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
+     #   systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
         hardware.opengl.extraPackages = [ 
-          pkgs.rocmPackages.clr.icd 
-          pkgs.amdvlk 
+    #      pkgs.rocmPackages.clr.icd 
+    #      pkgs.amdvlk 
         ];
+        home-manager.users.tom = {
         home.username = "tom";
         home.homeDirectory = "/home/tom";
         home.stateVersion = "23.11";
-        gtk = {
-          enable = true;
-          theme = {
-            name = "Catppuccin-Mocha-Mauve";
-            package = (pkgs.catppuccin-gtk.override { accents = [ "mauve" ]; variant = "mocha"; });
-          };
-          cursorTheme = {
-            name = "Catppuccin-Mocha-Mauve-Cursors";
-            package = pkgs.catppuccin-cursors.mochaMauve;
-            size = 16;
-          };
-          iconTheme = {
-            name = "Qogir";
-            package = (pkgs.qogir-icon-theme.override { colorVariants = [ "dark" ]; themeVariants = [ "default" ]; });
-          };
         };
-        xdg.portal = {
-          enable = true;
-          config = { common = { default = [      "gtk"    ]; }; };
-          extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-        };
-        home.packages = with pkgs; [
-          python3
-            neovim
-            kitty-themes
-            hyprpaper
-            hyprpicker
-            wl-clipboard
-            nodejs
-            roboto
-            (nerdfonts.override { fonts = [ "RobotoMono" ]; })
-            vesktop
-            grimblast
-            vlc
-            firefox
-            gedit
-            gimp
-            spotify
-            davinci-resolve
-            gnome.nautilus
-            gnome.sushi
-            gnome.totem
-            jetbrains.pycharm-professional
-            jetbrains.idea-ultimate
-            jetbrains.clion
-            android-studio
-            docker-compose
-            libsForQt5.polkit-kde-agent
-            github-copilot-intellij-agent
-            prismlauncher
-            unrar
-            unzip
-        ];
-        services.cliphist.enable = true;
-        programs.gpg.enable = true;
+     #   gtk = {
+      #    enable = true;
+     #     theme = {
+       #     name = "Catppuccin-Mocha-Mauve";
+         #   package = (pkgs.catppuccin-gtk.override { accents = [ "mauve" ]; variant = "mocha"; });
+      #    };
+     #     cursorTheme = {
+       #     name = "Catppuccin-Mocha-Mauve-Cursors";
+        #    package = pkgs.catppuccin-cursors.mochaMauve;
+      #      size = 16;
+      #    };
+       #   iconTheme = {
+        #    name = "Qogir";
+        #    package = (pkgs.qogir-icon-theme.override { colorVariants = [ "dark" ]; themeVariants = [ "default" ]; });
+       #   };
+      #  };
+     #   xdg.portal = {
+     #     enable = true;
+     #     config = { common = { default = [      "gtk"    ]; }; };
+        #  extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+       # };
+    #    home.packages = with pkgs; [
+   #       python3
+    #        neovim
+     #       kitty-themes
+      #      hyprpaper
+       #     hyprpicker
+        #    wl-clipboard
+         #   nodejs
+          #  roboto
+           # (nerdfonts.override { fonts = [ "RobotoMono" ]; })
+#            vesktop
+ #           grimblast
+  #          vlc
+   #         firefox
+    #        gedit
+     #       gimp
+      #      spotify
+       #     davinci-resolve
+        #    gnome.nautilus
+         #   gnome.sushi
+          #  gnome.totem
+           # jetbrains.pycharm-professional
+            #jetbrains.idea-ultimate
+#            jetbrains.clion
+ #           android-studio
+  #          docker-compose
+   #         libsForQt5.polkit-kde-agent
+    #        github-copilot-intellij-agent
+     #       prismlauncher
+      #      unrar
+       #     unzip
+        #];
+        #services.cliphist.enable = true;
+        #programs.gpg.enable = true;
         fonts.fontconfig.enable = true;
         # end
 
