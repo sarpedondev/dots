@@ -11,6 +11,7 @@
         settings = {
           exec-once = [
             "waybar"
+            "hyprpaper"
           ];
           bind = [
             "SUPER, Q, exec, hyprctl dispatch killactive"

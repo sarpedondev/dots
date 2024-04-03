@@ -4,6 +4,7 @@
     ./desktop
     ./development
     ./hardware
+    ./services
     ./system
   ];
 }

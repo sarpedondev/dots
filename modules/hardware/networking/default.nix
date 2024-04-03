@@ -7,4 +7,5 @@
     openFirewall = true;
   };
   networking.useDHCP = lib.mkDefault true;
+  services.printing.enable = true;
 }

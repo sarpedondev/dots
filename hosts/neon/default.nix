@@ -29,82 +29,6 @@ inputs.nixpkgs.lib.nixosSystem {
         nixpkgs.hostPlatform = inputs.nixpkgs.lib.mkDefault "x86_64-linux";
         hardware.cpu.amd.updateMicrocode = true;
 
-        # random stuff i havent categorized yet
-        services.printing.enable = true;
-        programs.gnupg.agent.enable = true;
-        networking.wireguard.enable = true;
-        services.resolved.enable = true;
-        services.mullvad-vpn.enable = true;
-        # HIP, ROCM and opengl
-        hardware.opengl.enable = true;
-     #   systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
-        hardware.opengl.extraPackages = [ 
-    #      pkgs.rocmPackages.clr.icd 
-    #      pkgs.amdvlk 
-        ];
-        home-manager.users.tom = {
-        home.username = "tom";
-        home.homeDirectory = "/home/tom";
-        home.stateVersion = "23.11";
-        };
-     #   gtk = {
-      #    enable = true;
-     #     theme = {
-       #     name = "Catppuccin-Mocha-Mauve";
-         #   package = (pkgs.catppuccin-gtk.override { accents = [ "mauve" ]; variant = "mocha"; });
-      #    };
-     #     cursorTheme = {
-       #     name = "Catppuccin-Mocha-Mauve-Cursors";
-        #    package = pkgs.catppuccin-cursors.mochaMauve;
-      #      size = 16;
-      #    };
-       #   iconTheme = {
-        #    name = "Qogir";
-        #    package = (pkgs.qogir-icon-theme.override { colorVariants = [ "dark" ]; themeVariants = [ "default" ]; });
-       #   };
-      #  };
-     #   xdg.portal = {
-     #     enable = true;
-     #     config = { common = { default = [      "gtk"    ]; }; };
-        #  extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-       # };
-    #    home.packages = with pkgs; [
-   #       python3
-    #        neovim
-     #       kitty-themes
-      #      hyprpaper
-       #     hyprpicker
-        #    wl-clipboard
-         #   nodejs
-          #  roboto
-           # (nerdfonts.override { fonts = [ "RobotoMono" ]; })
-#            vesktop
- #           grimblast
-  #          vlc
-   #         firefox
-    #        gedit
-     #       gimp
-      #      spotify
-       #     davinci-resolve
-        #    gnome.nautilus
-         #   gnome.sushi
-          #  gnome.totem
-           # jetbrains.pycharm-professional
-            #jetbrains.idea-ultimate
-#            jetbrains.clion
- #           android-studio
-  #          docker-compose
-   #         libsForQt5.polkit-kde-agent
-    #        github-copilot-intellij-agent
-     #       prismlauncher
-      #      unrar
-       #     unzip
-        #];
-        #services.cliphist.enable = true;
-        #programs.gpg.enable = true;
-        fonts.fontconfig.enable = true;
-        # end
-
         hyprland = {
           enable = true;
           monitor = "DP-1,5120x1440@120,0x0,1";
@@ -113,7 +37,7 @@ inputs.nixpkgs.lib.nixosSystem {
         hyprpaper = {
           enable = true;
           monitor = "DP-1";
-          wallpaper = "wallpaper.jpg";
+          wallpaper = "${./.}/wallpaper.jpg";
         };
 
         kitty.enable = true;
@@ -128,6 +52,8 @@ inputs.nixpkgs.lib.nixosSystem {
         audio.enable = true;
         bluetooth.enable = true;
         plymouth.enable = true;
+
+        mullvad.enable = true;
       }
   ];
 }
