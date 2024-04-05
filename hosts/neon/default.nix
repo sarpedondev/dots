@@ -3,6 +3,7 @@ inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux"; 
   modules = [
     inputs.home-manager.nixosModules.home-manager
+    inputs.nixvim.homeManagerModules.nixvim
       ../../modules
       {
         nixpkgs.overlays = overlays;
@@ -10,6 +11,7 @@ inputs.nixpkgs.lib.nixosSystem {
         networking.hostName = "neon";
 
         boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+        #boot.initrd.kernelModules = [ "amdgpu" ];
         boot.kernelModules = [ "kvm-amd" ];
 
         fileSystems."/" = { 
@@ -28,6 +30,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
         nixpkgs.hostPlatform = inputs.nixpkgs.lib.mkDefault "x86_64-linux";
         hardware.cpu.amd.updateMicrocode = true;
+        hardware.enableRedistributableFirmware = true;
 
         hyprland = {
           enable = true;
@@ -39,6 +42,8 @@ inputs.nixpkgs.lib.nixosSystem {
           monitor = "DP-1";
           wallpaper = "${./.}/wallpaper.jpg";
         };
+
+        programs.dconf.enable = true;
 
         kitty.enable = true;
         rofi.enable = true;

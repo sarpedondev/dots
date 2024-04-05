@@ -16,7 +16,7 @@
             hyprpicker
             nodejs
             
-            
+            davinci-resolve
             vesktop
             grimblast
           vlc
@@ -44,6 +44,7 @@
       wallpaper = ${config.hyprpaper.monitor},${config.hyprpaper.wallpaper}
       '';
     };
+      services.gvfs.enable = true;
             # HIP, ROCM and OpenGL
         hardware.opengl.enable = true;
         systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
