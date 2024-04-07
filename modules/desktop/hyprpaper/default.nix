@@ -35,6 +35,7 @@
             docker-compose
             libsForQt5.polkit-kde-agent
             github-copilot-intellij-agent
+	    gradle
             prismlauncher
             unrar
            unzip
