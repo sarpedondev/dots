@@ -5,5 +5,6 @@
     ./bluetooth
     ./boot
     ./networking
+    ./video
   ];
 }

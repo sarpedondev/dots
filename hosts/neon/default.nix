@@ -3,7 +3,7 @@ inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux"; 
   modules = [
     inputs.home-manager.nixosModules.home-manager
-    #inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeManagerModules.nixvim
       ../../modules
       {
         nixpkgs.overlays = overlays;
@@ -42,6 +42,8 @@ inputs.nixpkgs.lib.nixosSystem {
           monitor = "DP-1";
           wallpaper = "${./.}/wallpaper.jpg";
         };
+
+        hardware.amd.gpu.enable = true;
 
         programs.dconf.enable = true;
 
