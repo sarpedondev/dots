@@ -3,7 +3,6 @@
   home-manager.users.tom = {
     home.packages = with pkgs; [
       python3
-        neovim
         hyprpicker
         nodejs
         vesktop
@@ -16,6 +15,7 @@
         spotify
         #davinci-resolve
         gnome.nautilus
+        hoppscotch
         gnome.sushi
         gnome.totem
         whatsapp-for-linux
@@ -23,6 +23,7 @@
         libsForQt5.polkit-kde-agent
         qbittorrent
         prismlauncher
+        nur.repos.milahu.recaf-bin
         unrar
         unzip
         ];
