@@ -6,5 +6,6 @@
     ./hardware
     ./services
     ./system
+    ./disable-nvidia.nix
   ];
 }
