@@ -44,9 +44,10 @@
               "SUPER, mouse:273, resizewindow"
           ];
 
-          monitor = [
-            "HDMI-A-1,1366x768@60,0x0,1,mirror,LVDS-1"
-          ];
+          monitor = config.hyprland.monitor;
+#= [
+ #           "HDMI-A-1,1366x768@60,0x0,1,mirror,LVDS-1"
+  #        ];
 
           general = {
             gaps_in = 3;

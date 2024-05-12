@@ -3,9 +3,15 @@ inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux"; 
   modules = [
     inputs.home-manager.nixosModules.home-manager
-    #inputs.nixvim.homeManagerModules.nixvim
       ../../modules
       {
+        home-manager.users.tom = {
+          imports = [
+            inputs.nixvim.homeManagerModules.nixvim
+            inputs.sops-nix.homeManagerModules.sops
+          ];
+        };
+
         nixpkgs.overlays = overlays;
 
         networking.hostName = "xenon";
