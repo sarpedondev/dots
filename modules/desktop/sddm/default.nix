@@ -5,8 +5,8 @@
   };
 
   config = lib.mkIf config.sddm.enable {
-    services.xserver = {
-      enable = true;
+    services = {
+      xserver.enable = true;
       displayManager = {
         sessionPackages = [ pkgs.hyprland ];
         sddm = {

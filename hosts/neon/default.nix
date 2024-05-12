@@ -3,15 +3,22 @@ inputs.nixpkgs.lib.nixosSystem {
   system = "x86_64-linux"; 
   modules = [
     inputs.home-manager.nixosModules.home-manager
-    #inputs.nixvim.homeManagerModules.nixvim
       ../../modules
       {
+
+        home-manager.users.tom = {
+          imports = [
+            inputs.nixvim.homeManagerModules.nixvim
+            inputs.sops-nix.homeManagerModules.sops
+          ];
+        };
+
         nixpkgs.overlays = overlays;
 
         networking.hostName = "neon";
 
         boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-        #boot.initrd.kernelModules = [ "amdgpu" ];
+#boot.initrd.kernelModules = [ "amdgpu" ];
         boot.kernelModules = [ "kvm-amd" ];
 
         fileSystems."/" = { 
@@ -42,6 +49,8 @@ inputs.nixpkgs.lib.nixosSystem {
           monitor = "DP-1";
           wallpaper = "${./.}/wallpaper.jpg";
         };
+
+        hardware.amd.gpu.enable = true;
 
         programs.dconf.enable = true;
 

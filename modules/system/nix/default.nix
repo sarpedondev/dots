@@ -8,4 +8,13 @@
     home.homeDirectory = "/home/tom";
     home.stateVersion = "23.11";
   };
+  programs.nix-ld = {
+    enable = true;
+    libraries = [
+      pkgs.xorg.libXcursor
+      pkgs.xorg.libXrandr
+      pkgs.xorg.libXxf86vm
+      pkgs.libglvnd
+    ];
+  };
 }

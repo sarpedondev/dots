@@ -13,5 +13,11 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    programs.noisetorch.enable = true;
+    home-manager.users.tom = {
+      home.packages = [
+        pkgs.pavucontrol
+      ];
+    };
   };
 }

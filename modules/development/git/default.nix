@@ -8,15 +8,15 @@
     home-manager.users.tom = {
       programs.git = {
         enable = true;
-        userName = "TomJuri";
+        userName = "Tom";
         userEmail = "mail@tomjuri.de";
-        signing = {
-          key = "323DE11EA057A78F";
-          signByDefault = true;
-        };
+        signing.signByDefault = true;
       };
-      programs.gpg.enable = true;
+      programs.gpg = {
+        enable = true;
+
+      };
+      services.gpg-agent.enable = true;
     };
-    programs.gnupg.agent.enable = true;
   };
 }
