@@ -15,6 +15,8 @@
       pkgs.xorg.libXrandr
       pkgs.xorg.libXxf86vm
       pkgs.libglvnd
+      pkgs.bzip2
+      pkgs.gtk3
     ];
   };
 }

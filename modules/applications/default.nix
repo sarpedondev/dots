@@ -4,5 +4,6 @@
     ./kitty
     ./misc
     ./neovim
+    ./virtualbox
   ];
 }

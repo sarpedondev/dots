@@ -6,7 +6,11 @@
   };
 
   config = {
-    hardware.opengl.enable = true;
+    hardware.opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
     systemd.tmpfiles.rules = lib.mkIf config.hardware.amd.gpu.enable [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
     hardware.opengl.extraPackages = lib.mkIf config.hardware.amd.gpu.enable [ 
       pkgs.rocmPackages.clr.icd 

@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, ... }:
 {
   home-manager.users.tom = {
     home.packages = with pkgs; [
@@ -13,8 +13,9 @@
         gedit
         gimp
         spotify
-        #davinci-resolve
+        davinci-resolve
         gnome.nautilus
+        exodus
         hoppscotch
         gnome.sushi
         gnome.totem
@@ -26,6 +27,10 @@
         nur.repos.milahu.recaf-bin
         unrar
         unzip
+        gnome.eog
+        obs-studio
+        openssl
         ];
   };
+  programs.steam.enable = true;
 }

@@ -13,7 +13,7 @@ inputs.nixpkgs.lib.nixosSystem {
           ];
         };
 
-        nixpkgs.overlays = overlays;
+        inputs.nixpkgs.overlays = overlays;
 
         networking.hostName = "neon";
 
@@ -49,6 +49,8 @@ inputs.nixpkgs.lib.nixosSystem {
           monitor = "DP-1";
           wallpaper = "${./.}/wallpaper.jpg";
         };
+
+        services.gvfs.enable = true;
 
         hardware.amd.gpu.enable = true;
 

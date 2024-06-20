@@ -10,7 +10,10 @@
         enable = true;
         userName = "Tom";
         userEmail = "mail@tomjuri.de";
-        signing.signByDefault = true;
+        signing = {
+          key = "C3AB37F1B4E02425";
+          signByDefault = true;
+        };
       };
       programs.gpg = {
         enable = true;

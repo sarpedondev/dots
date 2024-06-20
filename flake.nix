@@ -21,7 +21,7 @@
   outputs = { nixpkgs, ... }@inputs: 
     let
     overlays = [
-    inputs.nur.overlay
+      inputs.nur.overlay
     ];
   in {
     nixosConfigurations = {
