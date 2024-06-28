@@ -3,5 +3,6 @@
   imports = [
     ./clipboard
     ./mullvad
+    ./notifications
   ];
 }

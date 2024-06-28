@@ -13,7 +13,7 @@ inputs.nixpkgs.lib.nixosSystem {
           ];
         };
 
-        inputs.nixpkgs.overlays = overlays;
+        nixpkgs.overlays = overlays;
 
         networking.hostName = "neon";
 

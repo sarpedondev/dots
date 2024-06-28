@@ -3,7 +3,7 @@
   programs.nixvim.plugins.lsp = {
     enable = true;
     servers = {
-      nil_ls = { enable = true; };
+      nil-ls = { enable = true; };
       kotlin-language-server = { enable = true; };
       rust-analyzer = { enable = true; installCargo = true; installRustc = true; };
       pyright = { enable = true; };

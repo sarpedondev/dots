@@ -8,11 +8,11 @@
     home-manager.users.tom = {
       wayland.windowManager.hyprland = { 
         enable = true;  
-	xwayland.enable = true;
+        xwayland.enable = true;
         settings = {
           exec-once = [
             "waybar"
-            "hyprpaper"
+              "hyprpaper"
           ];
           bind = [
             "SUPER, Q, exec, hyprctl dispatch killactive"
@@ -46,8 +46,8 @@
 
           monitor = config.hyprland.monitor;
 #= [
- #           "HDMI-A-1,1366x768@60,0x0,1,mirror,LVDS-1"
-  #        ];
+#           "HDMI-A-1,1366x768@60,0x0,1,mirror,LVDS-1"
+#        ];
 
           general = {
             gaps_in = 3;
@@ -73,6 +73,10 @@
           };
 
           layerrule = "blur, waybar";
+          windowrulev2 = [
+            "noinitialfocus,class:^jetbrains-(?!toolbox),floating:1"
+              "noinitialfocus,class:^1Password,floating:1"
+          ];
 
           animations = {
             enabled = true;

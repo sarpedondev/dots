@@ -13,18 +13,21 @@
         gedit
         gimp
         spotify
-        davinci-resolve
+        #davinci-resolve
         gnome.nautilus
-        exodus
+ #       exodus
         hoppscotch
         gnome.sushi
         gnome.totem
         whatsapp-for-linux
+        mongodb-compass
         jetbrains.idea-ultimate
+        jetbrains.webstorm
         libsForQt5.polkit-kde-agent
         qbittorrent
         prismlauncher
         nur.repos.milahu.recaf-bin
+        mongodb-compass
         unrar
         unzip
         gnome.eog
