@@ -13,7 +13,7 @@
         gedit
         gimp
         spotify
-        #davinci-resolve
+        davinci-resolve
         nautilus
         exodus
         hoppscotch
@@ -27,6 +27,7 @@
         libsForQt5.polkit-kde-agent
         qbittorrent
         prismlauncher
+        ffmpeg
         nur.repos.milahu.recaf-bin
         mongodb-compass
         unrar
