@@ -14,15 +14,16 @@
         gimp
         spotify
         #davinci-resolve
-        gnome.nautilus
- #       exodus
+        nautilus
+        exodus
         hoppscotch
-        gnome.sushi
-        gnome.totem
+        sushi
+        totem
         whatsapp-for-linux
         mongodb-compass
         jetbrains.idea-ultimate
         jetbrains.webstorm
+        jetbrains.pycharm-professional
         libsForQt5.polkit-kde-agent
         qbittorrent
         prismlauncher
@@ -30,9 +31,11 @@
         mongodb-compass
         unrar
         unzip
-        gnome.eog
+        eog
         obs-studio
         openssl
+        htop
+        neofetch
         ];
   };
   programs.steam.enable = true;

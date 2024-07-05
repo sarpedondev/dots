@@ -4,7 +4,7 @@
     gtk = {
       enable = true;
       theme = {
-        name = "Catppuccin-Mocha-Mauve";
+        name = "catppuccin-mocha-mauve-standard";
         package = (pkgs.catppuccin-gtk.override { accents = [ "mauve" ]; variant = "mocha"; });
       };
       cursorTheme = {

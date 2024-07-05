@@ -22,6 +22,7 @@
     let
     overlays = [
     inputs.nur.overlay
+      (import ./overlays/pkgs/exodus)
     ];
   in {
     nixosConfigurations = {
