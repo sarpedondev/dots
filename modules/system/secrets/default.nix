@@ -1,7 +1,12 @@
 { pkgs, ... }:
 {
-  programs._1password-gui.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "tom" ];
+  };
+  security.polkit.enable = true;
   home-manager.users.tom = {
+    services.gnome-keyring.enable = true;
     programs.ssh = {
       enable = true;
       extraConfig = ''

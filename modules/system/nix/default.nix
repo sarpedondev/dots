@@ -1,6 +1,13 @@
 { pkgs, config, lib, ... }: 
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings.experimental-features = [ "nix-command" "flakes" ];
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "-d";
+    };
+  };
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "23.11";
   home-manager.users.tom = {

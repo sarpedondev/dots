@@ -13,17 +13,18 @@
       colorschemes.catppuccin.enable = true;
 
       plugins = {
+        web-devicons.enable = true;
         presence-nvim = {
           enable = true;
           mainImage = "file";
         };
         bufferline = {
           enable = true;
-          separatorStyle = "slope";
+          settings.options.separator_style = "slope";
         };
         treesitter = {
           enable = true;
-          indent = true;
+          settings.indent.enable = true;
           nixvimInjections = true;
         };
         treesitter-context.enable = true;

@@ -4,5 +4,6 @@
     ./docker
     ./git
     ./java
+    ./javascript
   ];
 }
