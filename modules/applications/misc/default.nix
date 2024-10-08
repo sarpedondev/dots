@@ -9,6 +9,7 @@
       vlc
       mpv
       vdhcoapp
+      electrum-ltc
       bottles
       firefox
       gedit
