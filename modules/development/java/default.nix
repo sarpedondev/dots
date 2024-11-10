@@ -1,6 +1,9 @@
 { pkgs, config, lib, ... }:
 let
-additionalJDKs = with pkgs; [ zulu8 (pkgs.zulu.override { enableJavaFX = true; }) ];
+additionalJDKs = with pkgs; [
+    zulu8 (pkgs.zulu.override { enableJavaFX = true; })
+    zulu11
+  ];
 in
 {
   options = {

@@ -9,16 +9,18 @@
       vlc
       mpv
       vdhcoapp
-      electrum-ltc
       bottles
       firefox
       gedit
       gimp
       filezilla
+      gnome-keyring
+      apktool
+      ghex
       spotify
       davinci-resolve
       nautilus
-      exodus
+      pkgs.guarda
       hoppscotch
       sushi
       whatsapp-for-linux
@@ -28,9 +30,7 @@
       jetbrains.pycharm-professional
       libsForQt5.polkit-kde-agent
       qbittorrent
-      code-cursor
       prismlauncher
-      geckodriver
       ffmpeg
       nur.repos.milahu.recaf-bin
       mongodb-compass
@@ -43,5 +43,4 @@
       neofetch
     ];
   };
-  #programs.steam.enable = true;
 }

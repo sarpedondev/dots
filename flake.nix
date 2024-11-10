@@ -20,14 +20,14 @@
 
   outputs = { nixpkgs, ... }@inputs: 
     let
-    overlays = [
-    inputs.nur.overlay
-      (import ./overlays/pkgs/exodus)
-    ];
-  in {
-    nixosConfigurations = {
-      neon = import ./hosts/neon { inherit inputs overlays; };
-      xenon = import ./hosts/xenon { inherit inputs overlays; };
+      overlays = [
+        inputs.nur.overlay
+        (import ./overlays/pkgs.nix)
+      ];
+    in {
+      nixosConfigurations = {
+        neon = import ./hosts/neon { inherit inputs overlays; };
+        xenon = import ./hosts/xenon { inherit inputs overlays; };
+      };
     };
-  };
 }
