@@ -4,6 +4,7 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     inputs.home-manager.nixosModules.home-manager
       ../../modules
+      ../../modules/disable-nvidia.nix
       {
         home-manager.users.tom = {
           imports = [

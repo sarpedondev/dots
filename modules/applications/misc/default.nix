@@ -13,17 +13,16 @@
         gedit
         gimp
         spotify
-        davinci-resolve
+ #       davinci-resolve
         nautilus
         exodus
         hoppscotch
         sushi
         totem
-        whatsapp-for-linux
-        mongodb-compass
-        jetbrains.idea-ultimate
-        jetbrains.webstorm
-        jetbrains.pycharm-professional
+  #      whatsapp-for-linux
+         jetbrains.idea-ultimate
+   #     jetbrains.webstorm
+    #    jetbrains.pycharm-professional
         libsForQt5.polkit-kde-agent
         qbittorrent
         prismlauncher
@@ -39,5 +38,5 @@
         neofetch
         ];
   };
-  programs.steam.enable = true;
+  #programs.steam.enable = true;
 }
