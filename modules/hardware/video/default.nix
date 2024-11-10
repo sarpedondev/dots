@@ -15,5 +15,8 @@
       ];
     };
     systemd.tmpfiles.rules = lib.mkIf config.hardware.amd.gpu.enable [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
+    environment.systemPackages = with pkgs; [
+      libva
+    ];
   };
 }

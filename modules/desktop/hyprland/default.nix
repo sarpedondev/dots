@@ -13,6 +13,7 @@
           exec-once = [
             "waybar"
               "hyprpaper"
+            "hyprctl setcursor catppuccin-mocha-mauve 24"
           ];
           bind = [
             "SUPER, Q, exec, hyprctl dispatch killactive"

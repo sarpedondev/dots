@@ -8,7 +8,7 @@
     home-manager.users.tom = {
       programs.kitty = {
         enable = true;
-        theme = "Catppuccin-Mocha";
+        themeFile = "Catppuccin-Mocha";
         font = {
           name = "RobotoMono Nerd Font";
           size = 11.0;
