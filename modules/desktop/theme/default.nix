@@ -35,7 +35,7 @@
     };
 
     xdg.configFile = {
-      "Kvantum/Catppuccin-Mocha-Mauve".source = "${(pkgs.catppuccin-kvantum.override { accent = "Mauve"; variant = "Mocha"; })}/share/Kvantum/Catppuccin-Mocha-Mauve";
+      "Kvantum/Catppuccin-Mocha-Mauve".source = "${(pkgs.catppuccin-kvantum.override { accent = "mauve"; variant = "mocha"; })}/share/Kvantum/Catppuccin-Mocha-Mauve";
       "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
         General.theme = "Catppuccin-Mocha-Mauve";
       };
@@ -53,7 +53,7 @@
     fonts.fontconfig.enable = true;
     home.packages = with pkgs; [
       (nerdfonts.override { fonts = [ "RobotoMono" ]; })
-      (catppuccin-kvantum.override { accent = "Mauve"; variant = "Mocha"; })
+      (catppuccin-kvantum.override { accent = "mauve"; variant = "mocha"; })
     ];
   };
 }
