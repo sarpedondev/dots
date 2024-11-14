@@ -38,6 +38,7 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="0694", ATTRS{idProduct}=="0011", MODE="666",
   users.users.tom = {
     isNormalUser = true;
     description = "Tom";
+    initialPassword = "0000";
     extraGroups = [ "networkmanager" "wheel" ];
   };
 }
