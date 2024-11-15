@@ -10,7 +10,6 @@
       mpv
       vdhcoapp
       bottles
-      firefox
       gedit
       gimp
       filezilla

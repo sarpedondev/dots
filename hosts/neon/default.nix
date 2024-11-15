@@ -4,7 +4,8 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.default
-    ./disks.nix
+    ./disks/nvme.nix
+    ./disks/ssd.nix
     inputs.impermanence.nixosModules.impermanence
     ../../modules
     {
