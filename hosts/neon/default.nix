@@ -87,7 +87,7 @@ inputs.nixpkgs.lib.nixosSystem {
       '';
 
       fileSystems."/persist".neededForBoot = true;
-      environment.persistence."/persist/system" = {
+      environment.persistence."/persist" = {
         hideMounts = true;
         directories = [
           "/etc/nixos"
@@ -102,6 +102,15 @@ inputs.nixpkgs.lib.nixosSystem {
           "/etc/machine-id"
           { file = "/var/keys/secret_file"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
         ];
+        users.tom = {
+          directories = [
+            "Downloads"
+            "dots"
+            ".config/1Password"
+            ".config/sops"
+          ];
+        };
+
       };
 
       programs.fuse.userAllowOther = true;

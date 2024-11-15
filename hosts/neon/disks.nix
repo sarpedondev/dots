@@ -50,7 +50,7 @@
                 };
 
                 "/persist" = {
-                  mountOptions = ["subvol=persist" "noatime"];
+                  mountOptions = ["subvol=persist" "noatime" "umask=0000"];
                   mountpoint = "/persist";
                 };
 

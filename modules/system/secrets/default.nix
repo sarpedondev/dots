@@ -22,7 +22,7 @@
       age.keyFile = "/home/tom/.config/sops/age/keys.txt";
       secrets = {
         "gpg/public" = {};
-        "gpg/private" = {};
+        "gpg/private" = {     mode = "0400"; path = "/home/tom/.gnupg/private-keys-v1.d/tom.key"; };
       };
     };
   };
