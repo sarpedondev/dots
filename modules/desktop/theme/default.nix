@@ -35,9 +35,9 @@
     };
 
     xdg.configFile = {
-      "Kvantum/Catppuccin-Mocha-Mauve".source = "${(pkgs.catppuccin-kvantum.override { accent = "mauve"; variant = "mocha"; })}/share/Kvantum/Catppuccin-Mocha-Mauve";
+      "Kvantum/catppuccin-mocha-mauve".source = "${(pkgs.catppuccin-kvantum.override { accent = "mauve"; variant = "mocha"; })}/share/Kvantum/catppuccin-mocha-mauve";
       "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
-        General.theme = "Catppuccin-Mocha-Mauve";
+        General.theme = "catppuccin-mocha-mauve";
       };
       "qt5ct/qt5ct.conf".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
         Appearance.icon_theme = "Fluent";

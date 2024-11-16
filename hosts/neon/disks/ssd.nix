@@ -10,7 +10,7 @@
           type = "btrfs";
           extraArgs = [ "-f" ];
           mountpoint = "/home/tom/ssd";
-          mountOptions = [ "compress=zstd" "noatime" "umask=0000" ];
+          mountOptions = [ "compress=zstd" "noatime" ];
         };
       };
     }; 
