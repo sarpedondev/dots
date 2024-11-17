@@ -14,7 +14,10 @@
       settings = {
         "extensions.autoDisableScopes" = 0;
       };
-      search.default = "DuckDuckGo";
+      search = {
+        default = "DuckDuckGo";
+        force = true;
+      };
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         onepassword-password-manager
         ublock-origin

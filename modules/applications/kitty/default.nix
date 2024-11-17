@@ -8,6 +8,7 @@
     home-manager.users.tom = {
       programs.kitty = {
         enable = true;
+        shellIntegration.enableZshIntegration = true;
         themeFile = "Catppuccin-Mocha";
         font = {
           name = "RobotoMono Nerd Font";
@@ -23,6 +24,10 @@
       home.packages = with pkgs; [
         kitty-themes
       ];
+      home.sessionVariables = {
+        TERM = "kitty";
+        TERMINAL = "kitty";
+      };
     };
   };
 }

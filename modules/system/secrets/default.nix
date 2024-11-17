@@ -7,7 +7,7 @@
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.keyFile = "/home/tom/.config/sops/age/keys.txt";
+    age.keyFile = "/etc/age-key";
     secrets = {
       "gpg/public" = {};
       "gpg/private" = {     mode = "0400"; path = "/home/tom/.gnupg/private-keys-v1.d/tom.key"; };

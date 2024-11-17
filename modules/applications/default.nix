@@ -5,6 +5,7 @@
     ./kitty
     ./misc
     ./neovim
+    ./shell
     ./virtualization
   ];
 }

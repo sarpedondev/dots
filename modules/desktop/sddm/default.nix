@@ -6,7 +6,10 @@
 
   config = lib.mkIf config.sddm.enable {
     services = {
-      xserver.enable = true;
+      xserver = {
+        enable = true;
+        excludePackages = [ pkgs.xterm ];
+      };
       displayManager = {
         sessionPackages = [ pkgs.hyprland ];
         sddm = {
