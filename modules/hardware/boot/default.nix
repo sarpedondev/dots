@@ -8,7 +8,14 @@
     boot.kernelParams = [
       "quiet"
       "splash"
+      "boot.shell_on_fail"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
     ];
+    boot.consoleLogLevel = 0;
+    boot.initrd.verbose = false;
     boot.supportedFilesystems = [ "ntfs" ];
 
     boot.extraModulePackages = with config.boot.kernelPackages; [
@@ -22,6 +29,7 @@
     boot.plymouth.enable = config.plymouth.enable;
 
     boot.loader = {
+      timeout = 0;
       grub = {
         enable = true;
         useOSProber = true;

@@ -5,6 +5,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.default
     inputs.sops-nix.nixosModules.sops
+    inputs.stylix.nixosModules.stylix
     ./disks/nvme.nix
     ./disks/ssd.nix
     ../../modules

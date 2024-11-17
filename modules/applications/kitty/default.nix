@@ -14,11 +14,11 @@
       programs.kitty = {
         enable = true;
         shellIntegration.enableZshIntegration = true;
-        themeFile = "Catppuccin-Mocha";
-        font = {
-          name = "RobotoMono Nerd Font";
-          size = 11.0;
-        };
+        #themeFile = "Catppuccin-Mocha";
+        #font = {
+        # name = "RobotoMono Nerd Font";
+        #size = 11.0;
+        #};
         settings = {
           window_padding_width = 15;
           hide_window_decorations = true;

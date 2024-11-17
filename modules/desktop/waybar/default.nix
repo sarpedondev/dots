@@ -202,7 +202,7 @@
                   * {
           border: none;
                   border-radius: 0px;
-                  font-family: RobotoMono Nerd Font;
+                  font-family: ${config.stylix.fonts.sansSerif.name};
                   font-weight: bold;
                   font-size: 12px;
                   min-height: 10px;
