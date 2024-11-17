@@ -20,6 +20,7 @@
       #davinci-resolve
       deepin.dde-file-manager
       pkgs.guarda
+      pkgs.conv
       hoppscotch
       sushi
       whatsapp-for-linux
