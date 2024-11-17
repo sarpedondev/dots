@@ -18,7 +18,7 @@
       ghex
       spotify
       #davinci-resolve
-      nautilus
+      deepin.dde-file-manager
       pkgs.guarda
       hoppscotch
       sushi
