@@ -10,7 +10,11 @@
     age.keyFile = "/etc/age-key";
     secrets = {
       "gpg/public" = {};
-      "gpg/private" = {     mode = "0400"; path = "/home/tom/.gnupg/private-keys-v1.d/C3AB37F1B4E02425.key"; };
+      "gpg/private" = { 
+        owner = "tom";
+        mode = "0400";
+        path = "/home/tom/.gnupg/private-keys-v1.d/C3AB37F1B4E02425.key"; 
+      };
       password = { neededForUsers = true; };
     };
   };

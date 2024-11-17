@@ -11,13 +11,16 @@
         userName = "Tom";
         userEmail = "mail@tomjuri.de";
         signing = {
-          key = "C3AB37F1B4E02425";
+          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAhIFHH0pnLAj8O8KZ/N9U6DVy2ROPKeDECho0S3OXYP";
           signByDefault = true;
+        };
+        extraConfig = {
+          gpg.format = "ssh";
+          gpg."ssh".program = "/run/current-system/sw/bin/op-ssh-sign";
         };
       };
       programs.gpg = {
         enable = true;
-
       };
       services.gpg-agent.enable = true;
     };
