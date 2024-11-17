@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   options = {
     mullvad.enable = lib.mkEnableOption "Enables mullvad";

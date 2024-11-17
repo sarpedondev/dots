@@ -4,7 +4,6 @@
   fetchurl,
 }:
 
-
 let
   version = "1.0.20";
   pname = "guarda";

@@ -1,10 +1,11 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, makeWrapper
-, imagemagick
-, ffmpeg
-, pandoc
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  makeWrapper,
+  imagemagick,
+  ffmpeg,
+  pandoc,
 }:
 stdenv.mkDerivation rec {
   pname = "conv";
@@ -14,15 +15,15 @@ stdenv.mkDerivation rec {
     owner = "TomJuri";
     repo = "conv";
     rev = "v${version}";
-    sha256 = "sha256-QNA90q+v7nS/lslX0oN1uKNAAlL0sAvssjFlsejxA5Y="; 
+    sha256 = "sha256-QNA90q+v7nS/lslX0oN1uKNAAlL0sAvssjFlsejxA5Y=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
 
   buildInputs = [
-    imagemagick   # For image conversions
-    ffmpeg        # For video conversions
-    pandoc        # For document conversions
+    imagemagick # For image conversions
+    ffmpeg # For video conversions
+    pandoc # For document conversions
   ];
 
   dontBuild = true;
@@ -37,7 +38,7 @@ stdenv.mkDerivation rec {
     --prefix PATH : ${lib.makeBinPath buildInputs}
 
     cp README.md $out/share/doc/${pname}/README.md
-    '';
+  '';
 
   meta = with lib; {
     description = "A versatile file format conversion utility";

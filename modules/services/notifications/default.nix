@@ -1,4 +1,4 @@
-{ ... }: 
+{ ... }:
 {
   home-manager.users.tom.services.dunst = {
     enable = true;

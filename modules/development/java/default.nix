@@ -1,7 +1,13 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
-additionalJDKs = with pkgs; [
-    zulu8 (pkgs.zulu.override { enableJavaFX = true; })
+  additionalJDKs = with pkgs; [
+    zulu8
+    (pkgs.zulu.override { enableJavaFX = true; })
     zulu11
   ];
 in
@@ -13,10 +19,16 @@ in
   config = lib.mkIf config.java.enable {
     home-manager.users.tom = {
       home.sessionPath = [ "$HOME/.jdks" ];
-      home.file = (builtins.listToAttrs (builtins.map (jdk: {
-              name = ".jdks/${jdk.version}";
-              value = { source = jdk; };
-              }) additionalJDKs));
+      home.file = (
+        builtins.listToAttrs (
+          builtins.map (jdk: {
+            name = ".jdks/${jdk.version}";
+            value = {
+              source = jdk;
+            };
+          }) additionalJDKs
+        )
+      );
       home.packages = [
         pkgs.zulu17
       ];

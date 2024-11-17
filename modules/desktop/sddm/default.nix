@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   options = {
     sddm.enable = lib.mkEnableOption "Enables sddm";
@@ -20,7 +25,7 @@
       };
     };
     environment.systemPackages = [
-      pkgs.nur.repos.MtFBella109.catppuccin-mocha 
+      pkgs.nur.repos.MtFBella109.catppuccin-mocha
     ];
   };
 }

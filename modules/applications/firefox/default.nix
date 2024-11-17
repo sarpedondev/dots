@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home-manager.users.tom.programs.firefox = {
     enable = true;
     policies = {

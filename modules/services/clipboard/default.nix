@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   home-manager.users.tom = {
     home.packages = with pkgs; [

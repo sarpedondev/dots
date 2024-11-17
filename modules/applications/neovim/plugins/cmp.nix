@@ -8,7 +8,9 @@
         enable = true;
         settings = {
           autoEnableSources = true;
-          experimental = { ghost_text = true; };
+          experimental = {
+            ghost_text = true;
+          };
           performance = {
             debounce = 57;
             fetchingTimeout = 197;
@@ -19,17 +21,21 @@
             function(args)
             require('luasnip').lsp_expand(args.body)
             end
-            '';
+          '';
 
-          formatting.fields = ["kind" "abbr" "menu"];
+          formatting.fields = [
+            "kind"
+            "abbr"
+            "menu"
+          ];
 
           sources = [
-          { 
-            name = "nvim_lsp";
-          }
-          {
-            name = "luasnip";
-          }
+            {
+              name = "nvim_lsp";
+            }
+            {
+              name = "luasnip";
+            }
           ];
 
           mapping = {

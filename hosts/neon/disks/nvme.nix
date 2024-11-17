@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   disko.devices = {
     disk.main = {
       device = "/dev/nvme0n1";
@@ -30,8 +31,11 @@
               type = "btrfs";
               extraArgs = [ "-f" ];
               mountpoint = "/";
-              mountOptions = [ "compress=zstd" "noatime" ];
-            };          
+              mountOptions = [
+                "compress=zstd"
+                "noatime"
+              ];
+            };
           };
         };
       };

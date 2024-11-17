@@ -9,7 +9,9 @@
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/etc/age-key";
     secrets = {
-      password = { neededForUsers = true; };
+      password = {
+        neededForUsers = true;
+      };
     };
   };
 

@@ -1,39 +1,45 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
     hyprland.enable = lib.mkEnableOption "Enables hyprland";
-    hyprland.monitor = lib.mkOption {};
+    hyprland.monitor = lib.mkOption { };
   };
 
   config = lib.mkIf config.hyprland.enable {
     home-manager.users.tom = {
-      wayland.windowManager.hyprland = { 
-        enable = true;  
+      wayland.windowManager.hyprland = {
+        enable = true;
         xwayland.enable = true;
         settings = {
           exec-once = [
             "waybar"
-              "hyprpaper"
+            "hyprpaper"
             "hyprctl setcursor catppuccin-mocha-mauve 24"
           ];
           bind = [
             "SUPER, Q, exec, hyprctl dispatch killactive"
-              "SUPER, W, togglefloating"
-              "ALT, space, fullscreen"
-              "SUPER, T, exec, kitty"
-              ", print, exec, grimblast copy area --freeze"
-              "SUPER, V, exec, pkill -x rofi || TODO clipboard"
-              "SUPER, left, movefocus, l"
-              "SUPER, right, movefocus, r"
-              "SUPER, up, movefocus, u"
-              "SUPER, down, movefocus, d"
-              "SUPER, 1, workspace, 1"
-              "SUPER, 2, workspace, 2"
-              "SUPER, 3, workspace, 3"
-              "SUPER, 4, workspace, 4"
-              "SUPER SHIFT, 1, movetoworkspace, 1"
-              "SUPER SHIFT, 2, movetoworkspace, 2"
-              "SUPER SHIFT, 3, movetoworkspace, 3"
-              "SUPER SHIFT, 4, movetoworkspace, 4"
+            "SUPER, W, togglefloating"
+            "ALT, space, fullscreen"
+            "SUPER, T, exec, kitty"
+            ", print, exec, grimblast copy area --freeze"
+            "SUPER, V, exec, pkill -x rofi || TODO clipboard"
+            "SUPER, left, movefocus, l"
+            "SUPER, right, movefocus, r"
+            "SUPER, up, movefocus, u"
+            "SUPER, down, movefocus, d"
+            "SUPER, 1, workspace, 1"
+            "SUPER, 2, workspace, 2"
+            "SUPER, 3, workspace, 3"
+            "SUPER, 4, workspace, 4"
+            "SUPER SHIFT, 1, movetoworkspace, 1"
+            "SUPER SHIFT, 2, movetoworkspace, 2"
+            "SUPER SHIFT, 3, movetoworkspace, 3"
+            "SUPER SHIFT, 4, movetoworkspace, 4"
           ];
 
           bindr = [
@@ -42,13 +48,13 @@
 
           bindm = [
             "SUPER, mouse:272, movewindow"
-              "SUPER, mouse:273, resizewindow"
+            "SUPER, mouse:273, resizewindow"
           ];
 
           monitor = config.hyprland.monitor;
-#= [
-#           "HDMI-A-1,1366x768@60,0x0,1,mirror,LVDS-1"
-#        ];
+          #= [
+          #           "HDMI-A-1,1366x768@60,0x0,1,mirror,LVDS-1"
+          #        ];
 
           general = {
             gaps_in = 3;
@@ -76,18 +82,18 @@
           layerrule = "blur, waybar";
           windowrulev2 = [
             "noinitialfocus,class:^jetbrains-(?!toolbox),floating:1"
-              "noinitialfocus,class:^1Password,floating:1"
+            "noinitialfocus,class:^1Password,floating:1"
           ];
 
           animations = {
             enabled = true;
-            bezier = [ 
-              "wind, 0.05, 0.9, 0.1, 1.05" 
+            bezier = [
+              "wind, 0.05, 0.9, 0.1, 1.05"
               "winIn, 0.1, 1.1, 0.1, 1.1"
               "winOut, 0.3, -0.3, 0, 1"
-              "liner, 1, 1, 1, 1" 
+              "liner, 1, 1, 1, 1"
             ];
-            animation = [ 
+            animation = [
               "windows, 1, 6, wind, slide"
               "windowsIn, 1, 6, winIn, slide"
               "windowsOut, 1, 5, winOut, slide"
@@ -109,4 +115,4 @@
       };
     };
   };
-                            }
+}

@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }: 
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   networking.networkmanager.enable = true;
   services.avahi = {

@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }: 
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   options = {
     kitty.enable = lib.mkEnableOption "Enables kitty";

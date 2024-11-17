@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }: 
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   options = {
     git.enable = lib.mkEnableOption "Enables git";

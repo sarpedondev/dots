@@ -3,9 +3,9 @@
   home-manager.users.tom = {
     imports = [
       ./plugins
-        ./set.nix
+      ./set.nix
     ];
-   programs.nixvim = {
+    programs.nixvim = {
       enable = true;
       defaultEditor = true;
       vimAlias = true;
@@ -36,11 +36,11 @@
       };
 
       keymaps = [
-      {
-        mode = "n";
-        key = "<C-n>";
-        action = "<cmd>NvimTreeToggle<CR>";
-      }
+        {
+          mode = "n";
+          key = "<C-n>";
+          action = "<cmd>NvimTreeToggle<CR>";
+        }
       ];
     };
   };

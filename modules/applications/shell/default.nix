@@ -1,5 +1,6 @@
-{ pkgs, ... }: {
-  users.users.tom.shell = pkgs.zsh; 
+{ pkgs, ... }:
+{
+  users.users.tom.shell = pkgs.zsh;
   programs.zsh.enable = true;
   home-manager.users.tom = {
     programs.starship = {
@@ -60,7 +61,11 @@
       history.size = 10000;
       history.ignoreAllDups = true;
       history.path = "$HOME/.zsh_history";
-      history.ignorePatterns = ["rm *" "pkill *" "cp *"];
+      history.ignorePatterns = [
+        "rm *"
+        "pkill *"
+        "cp *"
+      ];
     };
   };
 }

@@ -1,9 +1,14 @@
-{ pkgs, config, lib, ...}: 
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   options = {
     hyprpaper.enable = lib.mkEnableOption "Enables hyprpaper";
-    hyprpaper.monitor = lib.mkOption {};
-    hyprpaper.wallpaper = lib.mkOption {};
+    hyprpaper.monitor = lib.mkOption { };
+    hyprpaper.wallpaper = lib.mkOption { };
   };
 
   config = lib.mkIf config.hyprpaper.enable {

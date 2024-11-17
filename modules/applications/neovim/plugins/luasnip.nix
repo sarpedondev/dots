@@ -7,10 +7,10 @@
       store_selection_keys = "<Tab>";
     };
     fromVscode = [
-    {
-      lazyLoad = true;
-      paths = "${pkgs.vimPlugins.friendly-snippets}";
-    }
+      {
+        lazyLoad = true;
+        paths = "${pkgs.vimPlugins.friendly-snippets}";
+      }
     ];
   };
 }
