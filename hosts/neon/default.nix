@@ -1,6 +1,6 @@
 { inputs, overlays, ... }:
 inputs.nixpkgs.lib.nixosSystem {
-  system = "x86_64-linux"; 
+  system = "x86_64-linux";
   modules = [
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.default
@@ -9,18 +9,24 @@ inputs.nixpkgs.lib.nixosSystem {
     ./disks/ssd.nix
     ../../modules
     {
-
       home-manager.users.tom = {
         imports = [
           inputs.nixvim.homeManagerModules.nixvim
-                  ];
+        ];
       };
 
       nixpkgs.overlays = overlays;
 
       networking.hostName = "neon";
 
-      boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+      boot.initrd.availableKernelModules = [
+        "nvme"
+        "xhci_pci"
+        "ahci"
+        "usb_storage"
+        "usbhid"
+        "sd_mod"
+      ];
       #boot.initrd.kernelModules = [ "amdgpu" ];
       boot.kernelModules = [ "kvm-amd" ];
 
