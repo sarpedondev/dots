@@ -19,10 +19,6 @@
           gpg."ssh".program = "/run/current-system/sw/bin/op-ssh-sign";
         };
       };
-      programs.gpg = {
-        enable = true;
-      };
-      services.gpg-agent.enable = true;
     };
   };
 }
