@@ -32,6 +32,7 @@
       pkgs.libglvnd
       pkgs.bzip2
       pkgs.gtk3
+      pkgs.curl
     ];
   };
 }

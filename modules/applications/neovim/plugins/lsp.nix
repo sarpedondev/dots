@@ -1,39 +1,40 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   home.packages = with pkgs; [ nixfmt-rfc-style ];
   programs.nixvim.plugins = {
+    inc-rename.enable = true;
     lsp = {
       enable = true;
       servers = {
-        nil_ls = {
-          enable = true;
-          settings.formatting.command = [ "nixfmt" ];
-        };
-        kotlin_language_server = {
-          enable = true;
-        };
+        gopls.enable = true;
+        templ.enable = true;
+        nil_ls = { enable = true; };
+        kotlin_language_server = { enable = true; };
         rust_analyzer = {
           enable = true;
           installCargo = true;
           installRustc = true;
         };
-        pyright = {
-          enable = true;
-        };
-        html = {
-          enable = true;
-        };
-        ts_ls = {
-          enable = true;
-        };
-        tailwindcss = {
-          enable = true;
-        };
+        pyright = { enable = true; };
+        html = { enable = true; };
+        ts_ls = { enable = true; };
+        tailwindcss = { enable = true; };
       };
     };
-    lsp-format = {
+
+    lsp-format = { enable = true; };
+
+    none-ls = {
       enable = true;
-      lspServersToEnable = [ "nil_ls" ];
+      sources.formatting = {
+        nixfmt.enable = true; # Nix
+        black.enable = true; # Python
+        isort.enable = true; # Python
+        ktlint.enable = true; # Kotlin
+        prettier = {
+          enable = true;
+          disableTsServerFormatter = true;
+        }; # Prettier lmao
+      };
     };
   };
 }

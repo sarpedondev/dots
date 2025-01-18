@@ -1,15 +1,7 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}:
-{
-  options = {
-    audio.enable = lib.mkEnableOption "Enables audio";
-  };
+{ pkgs, config, lib, ... }: {
+  options = { audio.enable = lib.mkEnableOption "Enables audio"; };
   config = lib.mkIf config.audio.enable {
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
@@ -18,10 +10,6 @@
       pulse.enable = true;
     };
     programs.noisetorch.enable = true;
-    home-manager.users.tom = {
-      home.packages = [
-        pkgs.pavucontrol
-      ];
-    };
+    home-manager.users.tom = { home.packages = [ pkgs.pavucontrol ]; };
   };
 }

@@ -1,208 +1,200 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}:
-{
-  options = {
-    waybar.enable = lib.mkEnableOption "Enables waybar";
-  };
+{ pkgs, config, lib, ... }: {
+  options = { waybar.enable = lib.mkEnableOption "Enables waybar"; };
 
   config = lib.mkIf config.waybar.enable {
     home-manager.users.tom = {
       programs.waybar = {
         enable = true;
-        settings = [
-          {
-            layer = "top";
-            position = "bottom";
-            mod = "dock";
-            height = 31;
-            exclusive = true;
-            passthrough = false;
-            gtk-layer-shell = true;
+        settings = [{
+          layer = "top";
+          position = "bottom";
+          mod = "dock";
+          height = 31;
+          exclusive = true;
+          passthrough = false;
+          gtk-layer-shell = true;
 
-            modules-left = [
-              "custom/padd"
-              "custom/l_end"
-              "custom/power"
-              "custom/cliphist"
-              "custom/picker"
-              "custom/r_end"
-              "custom/l_end"
-              "wlr/taskbar"
-              "custom/r_end"
-              "custom/padd"
-            ];
-            modules-center = [
-              "custom/padd"
-              "custom/l_end"
-              "clock"
-              "custom/r_end"
-              "custom/padd"
-            ];
-            modules-right = [
-              "custom/padd"
-              "custom/l_end"
-              "tray"
-              "custom/r_end"
-              "custom/l_end"
-              "network"
-              "pulseaudio"
-              "pulseaudio#microphone"
-              "custom/r_end"
-              "custom/padd"
-            ];
+          modules-left = [
+            "custom/padd"
+            "custom/l_end"
+            "custom/power"
+            "custom/cliphist"
+            "custom/picker"
+            "custom/r_end"
+            "custom/l_end"
+            "wlr/taskbar"
+            "custom/r_end"
+            "custom/padd"
+          ];
+          modules-center = [
+            "custom/padd"
+            "custom/l_end"
+            "clock"
+            "custom/r_end"
+            "custom/padd"
+          ];
+          modules-right = [
+            "custom/padd"
+            "custom/l_end"
+            "tray"
+            "custom/r_end"
+            "custom/l_end"
+            "network"
+            "pulseaudio"
+            "pulseaudio#microphone"
+            "custom/r_end"
+            "custom/padd"
+          ];
 
-            "custom/power" = {
-              format = "{}";
-              exec = "echo ; echo  logout";
-              on-click = "~/.config/hypr/scripts/logoutlaunch.sh 2";
-              interval = 86400;
-              tooltip = true;
-            };
+          "custom/power" = {
+            format = "{}";
+            exec = "echo ; echo  logout";
+            on-click = "~/.config/hypr/scripts/logoutlaunch.sh 2";
+            interval = 86400;
+            tooltip = true;
+          };
 
-            "custom/cliphist" = {
-              format = "";
-              exec = "echo ; echo 󰅇 clipboard history";
-              on-click = "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh c";
-              on-click-right = "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh d";
-              on-click-middle = "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh w";
-              interval = 86400;
-              tooltip = true;
-            };
+          "custom/cliphist" = {
+            format = "";
+            exec = "echo ; echo 󰅇 clipboard history";
+            on-click = "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh c";
+            on-click-right =
+              "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh d";
+            on-click-middle =
+              "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh w";
+            interval = 86400;
+            tooltip = true;
+          };
 
-            "custom/picker" = {
-              format = "";
-              exec = "echo ; echo  color picker";
-              on-click = "hyprpicker -a -f hex -r";
-              on-click-right = "hyprpicker -a -f rgb -r";
-              interval = 86400;
-              tooltip = true;
-            };
+          "custom/picker" = {
+            format = "";
+            exec = "echo ; echo  color picker";
+            on-click = "hyprpicker -a -f hex -r";
+            on-click-right = "hyprpicker -a -f rgb -r";
+            interval = 86400;
+            tooltip = true;
+          };
 
-            "wlr/taskbar" = {
-              format = "{icon}";
-              icon-size = 18;
-              icon-theme = "Tela-circle-dracula";
-              spacing = 0;
-              tooltip-format = "{title}";
-              on-click = "activate";
-              on-click-middle = "close";
-            };
+          "wlr/taskbar" = {
+            format = "{icon}";
+            icon-size = 18;
+            icon-theme = "Tela-circle-dracula";
+            spacing = 0;
+            tooltip-format = "{title}";
+            on-click = "activate";
+            on-click-middle = "close";
+          };
 
-            clock = {
-              format = "{: %R}";
-              format-alt = "{:󰃭 %d·%m·%y}";
-              tooltip-format = "<tt>{calendar}</tt>";
-              calendar = {
-                mode = "month";
-                mode-mon-col = 3;
-                on-scroll = 1;
-                on-click-right = "mode";
-                format = {
-                  months = "<span color='#ffead3'><b>{}</b></span>";
-                  weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-                  today = "<span color='#ff6699'><b>{}</b></span>";
-                };
-              };
-              actions = {
-                on-click-right = "mode";
-                on-click-forward = "tz_up";
-                on-click-backward = "tz_down";
-                on-scroll-up = "shift_up";
-                on-scroll-down = "shift_down";
+          clock = {
+            format = "{: %R}";
+            format-alt = "{:󰃭 %d·%m·%y}";
+            tooltip-format = "<tt>{calendar}</tt>";
+            calendar = {
+              mode = "month";
+              mode-mon-col = 3;
+              on-scroll = 1;
+              on-click-right = "mode";
+              format = {
+                months = "<span color='#ffead3'><b>{}</b></span>";
+                weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+                today = "<span color='#ff6699'><b>{}</b></span>";
               };
             };
-
-            tray = {
-              icon-size = 18;
-              spacing = 5;
+            actions = {
+              on-click-right = "mode";
+              on-click-forward = "tz_up";
+              on-click-backward = "tz_down";
+              on-scroll-up = "shift_up";
+              on-scroll-down = "shift_down";
             };
+          };
 
-            network = {
-              format-ethernet = "󱘖 Wired";
-              tooltip-format = "󱘖 {ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}";
-              format-linked = "󱘖 {ifname} (No IP)";
-              format-disconnected = " Disconnected";
-            };
+          tray = {
+            icon-size = 18;
+            spacing = 5;
+          };
 
-            pulseaudio = {
-              format = "{icon} {volume}";
-              format-muted = "󰟎 0";
-              on-click = "pavucontrol -t 3";
-              on-click-middle = "~/.config/hypr/scripts/volumecontrol.sh -o m";
-              on-scroll-up = "~/.config/hypr/scripts/volumecontrol.sh -o i";
-              on-scroll-down = "~/.config/hypr/scripts/volumecontrol.sh -o d";
-              tooltip-format = "{icon} {desc} // {volume}%";
-              scroll-step = 5;
-              format-icons = {
-                headset = "󰋋";
-              };
-            };
+          network = {
+            format-ethernet = "󱘖 Wired";
+            tooltip-format =
+              "󱘖 {ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}";
+            format-linked = "󱘖 {ifname} (No IP)";
+            format-disconnected = " Disconnected";
+          };
 
-            "pulseaudio#microphone" = {
-              format = "{format_source}";
-              format-source = " {volume}";
-              format-source-muted = " 0";
-              on-click = "pavucontrol -t 4";
-              on-click-middle = "~/.config/hypr/scripts/volumecontrol.sh -i m";
-              on-scroll-up = "~/.config/hypr/scripts/volumecontrol.sh -i i";
-              on-scroll-down = "~/.config/hypr/scripts/volumecontrol.sh -i d";
-              tooltip-format = "{format_source} {source_desc} // {source_volume}%";
-              scroll-step = 5;
-            };
+          pulseaudio = {
+            format = "{icon} {volume}";
+            format-muted = "󰟎 0";
+            on-click = "pavucontrol -t 3";
+            on-click-middle = "~/.config/hypr/scripts/volumecontrol.sh -o m";
+            on-scroll-up = "~/.config/hypr/scripts/volumecontrol.sh -o i";
+            on-scroll-down = "~/.config/hypr/scripts/volumecontrol.sh -o d";
+            tooltip-format = "{icon} {desc} // {volume}%";
+            scroll-step = 5;
+            format-icons = { headset = "󰋋"; };
+          };
 
-            "custom/l_end" = {
-              format = " ";
-              interval = "once";
-              tooltip = false;
-            };
+          "pulseaudio#microphone" = {
+            format = "{format_source}";
+            format-source = " {volume}";
+            format-source-muted = " 0";
+            on-click = "pavucontrol -t 4";
+            on-click-middle = "~/.config/hypr/scripts/volumecontrol.sh -i m";
+            on-scroll-up = "~/.config/hypr/scripts/volumecontrol.sh -i i";
+            on-scroll-down = "~/.config/hypr/scripts/volumecontrol.sh -i d";
+            tooltip-format =
+              "{format_source} {source_desc} // {source_volume}%";
+            scroll-step = 5;
+          };
 
-            "custom/r_end" = {
-              format = " ";
-              interval = "once";
-              tooltip = false;
-            };
+          "custom/l_end" = {
+            format = " ";
+            interval = "once";
+            tooltip = false;
+          };
 
-            "custom/sl_end" = {
-              format = " ";
-              interval = "once";
-              tooltip = false;
-            };
+          "custom/r_end" = {
+            format = " ";
+            interval = "once";
+            tooltip = false;
+          };
 
-            "custom/sr_end" = {
-              format = " ";
-              interval = "once";
-              tooltip = false;
-            };
+          "custom/sl_end" = {
+            format = " ";
+            interval = "once";
+            tooltip = false;
+          };
 
-            "custom/rl_end" = {
-              format = " ";
-              interval = "once";
-              tooltip = false;
-            };
+          "custom/sr_end" = {
+            format = " ";
+            interval = "once";
+            tooltip = false;
+          };
 
-            "custom/rr_end" = {
-              format = " ";
-              interval = "once";
-              tooltip = false;
-            };
+          "custom/rl_end" = {
+            format = " ";
+            interval = "once";
+            tooltip = false;
+          };
 
-            "custom/padd" = {
-              format = "  ";
-              interval = "once";
-              tooltip = false;
-            };
-          }
-        ];
+          "custom/rr_end" = {
+            format = " ";
+            interval = "once";
+            tooltip = false;
+          };
+
+          "custom/padd" = {
+            format = "  ";
+            interval = "once";
+            tooltip = false;
+          };
+        }];
 
         style = ''
                   * {
           border: none;
                   border-radius: 0px;
-                  font-family: ${config.stylix.fonts.sansSerif.name};
+                  font-family: NotoSerif Nerd Font;
                   font-weight: bold;
                   font-size: 12px;
                   min-height: 10px;

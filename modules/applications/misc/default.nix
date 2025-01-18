@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   home-manager.users.tom = {
     home.packages = with pkgs; [
       python3
@@ -13,6 +12,7 @@
       gedit
       gimp
       filezilla
+      tor-browser
       gnome-keyring
       apktool
       ghex

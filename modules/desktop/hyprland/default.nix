@@ -1,10 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
-{
+{ pkgs, lib, config, ... }: {
   options = {
     hyprland.enable = lib.mkEnableOption "Enables hyprland";
     hyprland.monitor = lib.mkOption { };
@@ -19,7 +13,7 @@
           exec-once = [
             "waybar"
             "hyprpaper"
-            "hyprctl setcursor catppuccin-mocha-mauve 24"
+            "hyprctl setcursor catppuccin-mocha-mauve-cursors 24"
           ];
           bind = [
             "SUPER, Q, exec, hyprctl dispatch killactive"
@@ -42,14 +36,10 @@
             "SUPER SHIFT, 4, movetoworkspace, 4"
           ];
 
-          bindr = [
-            "SUPER, SUPER_L, exec, pkill -x rofi || rofi -show drun"
-          ];
+          bindr = [ "SUPER, SUPER_L, exec, pkill -x rofi || rofi -show drun" ];
 
-          bindm = [
-            "SUPER, mouse:272, movewindow"
-            "SUPER, mouse:273, resizewindow"
-          ];
+          bindm =
+            [ "SUPER, mouse:272, movewindow" "SUPER, mouse:273, resizewindow" ];
 
           monitor = config.hyprland.monitor;
           #= [
@@ -68,7 +58,6 @@
 
           decoration = {
             rounding = 10;
-            drop_shadow = false;
             blur = {
               enabled = true;
               size = 6;
@@ -107,9 +96,7 @@
 
           input = {
             kb_layout = "de";
-            touchpad = {
-              natural_scroll = true;
-            };
+            touchpad = { natural_scroll = true; };
           };
         };
       };

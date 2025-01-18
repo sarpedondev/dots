@@ -5,29 +5,20 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.default
     inputs.sops-nix.nixosModules.sops
-    inputs.stylix.nixosModules.stylix
     ./disks/nvme.nix
     ./disks/ssd.nix
     ../../modules
     {
       home-manager.users.tom = {
-        imports = [
-          inputs.nixvim.homeManagerModules.nixvim
-        ];
+        imports = [ inputs.nixvim.homeManagerModules.nixvim ];
       };
 
       nixpkgs.overlays = overlays;
 
       networking.hostName = "neon";
 
-      boot.initrd.availableKernelModules = [
-        "nvme"
-        "xhci_pci"
-        "ahci"
-        "usb_storage"
-        "usbhid"
-        "sd_mod"
-      ];
+      boot.initrd.availableKernelModules =
+        [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "amdgpu" ];
       #boot.initrd.kernelModules = [ "amdgpu" ];
       boot.kernelModules = [ "kvm-amd" ];
 

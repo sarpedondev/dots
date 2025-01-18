@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
-    stylix.url = "github:danth/stylix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,15 +22,9 @@
     };
   };
 
-  outputs =
-    { nixpkgs, ... }@inputs:
-    let
-      overlays = [
-        inputs.nur.overlay
-        (import ./overlays/pkgs.nix)
-      ];
-    in
-    {
+  outputs = { nixpkgs, ... }@inputs:
+    let overlays = [ inputs.nur.overlays.default (import ./overlays/pkgs.nix) ];
+    in {
       nixosConfigurations = {
         neon = import ./hosts/neon { inherit inputs overlays; };
         xenon = import ./hosts/xenon { inherit inputs overlays; };

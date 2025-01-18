@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   users.users.tom.shell = pkgs.zsh;
   programs.zsh.enable = true;
   home-manager.users.tom = {
@@ -55,17 +54,30 @@
       shellAliases = {
         ll = "ls -l";
         edit = "sudo -e";
+        ssh = "kitty +kitten ssh";
+        merge-into-prod =
+          "git checkout prod && git pull && git merge develop && git push && git checkout develop";
+        merge-into-develop =
+          "git checkout develop && git pull && git merge prod && git push && git checkout prod";
         update = "sudo nixos-rebuild switch";
+        kill-intellij = "pkill -f idea-ultimate";
+        nuke = "pkill -f";
       };
 
       history.size = 10000;
       history.ignoreAllDups = true;
       history.path = "$HOME/.zsh_history";
-      history.ignorePatterns = [
-        "rm *"
-        "pkill *"
-        "cp *"
-      ];
+      history.ignorePatterns = [ "rm *" "pkill *" "cp *" ];
+    };
+    programs = {
+      direnv = {
+        enable = true;
+        enableZshIntegration = true;
+        nix-direnv.enable = true;
+        stdlib = ''
+          use flake
+        '';
+      };
     };
   };
 }

@@ -22,6 +22,7 @@
         extraConfig = {
           gpg.format = "ssh";
           gpg."ssh".program = "/run/current-system/sw/bin/op-ssh-sign";
+          url."git@github.com:".insteadOf = "https://github.com/";
         };
       };
     };

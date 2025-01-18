@@ -1,12 +1,6 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}:
-{
+{ pkgs, config, lib, ... }: {
   services.udev.extraRules = ''
-        # Pybrickdev rules for LEGO programmable bricks
+    # Pybrickdev rules for LEGO programmable bricks
 
     # MINDSTORMS NXT brick 
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0694", ATTRS{idProduct}=="0002", MODE="666", TAG+="uaccess"
@@ -44,9 +38,6 @@
     isNormalUser = true;
     description = "Tom";
     hashedPasswordFile = config.sops.secrets.password.path;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
+    extraGroups = [ "networkmanager" "wheel" ];
   };
 }
