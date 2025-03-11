@@ -8,6 +8,7 @@
         gopls.enable = true;
         templ.enable = true;
         nil_ls = { enable = true; };
+        ccls = { enable = true; };
         kotlin_language_server = { enable = true; };
         rust_analyzer = {
           enable = true;

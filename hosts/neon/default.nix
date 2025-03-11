@@ -11,7 +11,16 @@ inputs.nixpkgs.lib.nixosSystem {
     {
       home-manager.users.tom = {
         imports = [ inputs.nixvim.homeManagerModules.nixvim ];
+
+        home.file.".steam/steam/steam_dev.cfg".text = ''
+          unShaderBackgroundProcessingThreads 8
+        '';
       };
+
+      #boot.kernel.sysctl = {
+      #  "kernel.yama.ptrace_scope" = 2;
+      #  "proc.hidepid" = 2;
+      #};
 
       nixpkgs.overlays = overlays;
 

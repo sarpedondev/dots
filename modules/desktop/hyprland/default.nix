@@ -14,6 +14,7 @@
             "waybar"
             "hyprpaper"
             "hyprctl setcursor catppuccin-mocha-mauve-cursors 24"
+            "xhost +SI:localuser:root"
           ];
           bind = [
             "SUPER, Q, exec, hyprctl dispatch killactive"
@@ -72,6 +73,7 @@
           windowrulev2 = [
             "noinitialfocus,class:^jetbrains-(?!toolbox),floating:1"
             "noinitialfocus,class:^1Password,floating:1"
+            "noblur,title:RedTide"
           ];
 
           animations = {

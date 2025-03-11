@@ -1,5 +1,11 @@
 { pkgs, ... }: {
+  programs.steam.enable = true;
   home-manager.users.tom = {
+    programs.gpg.enable = true;
+    services.gpg-agent = {
+      enable = true;
+      pinentryPackage = pkgs.pinentry-tty;
+    };
     home.packages = with pkgs; [
       python3
       hyprpicker
@@ -19,6 +25,11 @@
       spotify
       #davinci-resolve
       deepin.dde-file-manager
+
+      pkg-config
+      rustup
+      xorg.xhost
+
       pkgs.guarda
       pkgs.conv
       hoppscotch
@@ -26,6 +37,11 @@
       whatsapp-for-linux
       mongodb-compass
       jetbrains.idea-ultimate
+      jetbrains.clion
+      wmctrl
+      jetbrains.pycharm-professional
+      jetbrains.rider
+      jetbrains.rust-rover
       libsForQt5.polkit-kde-agent
       qbittorrent
       prismlauncher
@@ -35,10 +51,18 @@
       unrar
       unzip
       eog
-      obs-studio
+      (wrapOBS { plugins = with obs-studio-plugins; [ droidcam-obs ]; })
       openssl
       htop
       neofetch
+
+      (pkgs.writeShellScriptBin "gui" ''
+        if [ $# -gt 0 ]; then
+            ($@ &) &>/dev/null
+        else
+            echo "missing argument"
+        fi
+      '')
     ];
   };
 }

@@ -18,13 +18,14 @@
       };
     };
   };
-  programs.virt-manager.enable = true;
+  # programs.virt-manager.enable = true;
   home-manager.users.tom = {
-    dconf.settings = {
-      "org/virt-manager/virt-manager/connections" = {
-        autoconnect = [ "qemu:///system" ];
-        uris = [ "qemu:///system" ];
-      };
-    };
+    home.packages = with pkgs; [ quickemu spice-gtk virtiofsd virtio-win ];
+    #dconf.settings = {
+    #  "org/virt-manager/virt-manager/connections" = {
+    #    autoconnect = [ "qemu:///system" ];
+    #    uris = [ "qemu:///system" ];
+    #  };
+    #};
   };
 }

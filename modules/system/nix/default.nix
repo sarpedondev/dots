@@ -1,15 +1,6 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}:
-{
+{ pkgs, config, lib, ... }: {
   nix = {
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    settings.experimental-features = [ "nix-command" "flakes" ];
     gc = {
       automatic = true;
       dates = "weekly";
@@ -28,11 +19,17 @@
     libraries = [
       pkgs.xorg.libXcursor
       pkgs.xorg.libXrandr
+      pkgs.xorg.libX11
       pkgs.xorg.libXxf86vm
+      pkgs.xorg.libXi
+      pkgs.wayland
+      pkgs.libxkbcommon
       pkgs.libglvnd
       pkgs.bzip2
       pkgs.gtk3
       pkgs.curl
+      pkgs.openssl
+      pkgs.glibc
     ];
   };
 }

@@ -1,10 +1,1 @@
-{ ... }:
-{
-  imports = [
-    ./cpp
-    ./docker
-    ./git
-    ./java
-    ./javascript
-  ];
-}
+{ ... }: { imports = [ ./cpp ./docker ./git ./java ./javascript ./k3s.nix ]; }
