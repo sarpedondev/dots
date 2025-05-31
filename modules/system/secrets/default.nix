@@ -1,4 +1,15 @@
 { pkgs, ... }: {
+  programs.ssh = {
+    extraConfig = ''
+      IdentityAgent ~/.1password/agent.sock
+
+      Host ssh.nebulaclient.zip
+        ProxyCommand ${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h
+    '';
+  };
+
+  environment.systemPackages = with pkgs; [ cloudflared ];
+
   programs._1password-gui = {
     enable = true;
     polkitPolicyOwners = [ "tom" ];
@@ -7,7 +18,13 @@
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/etc/age-key";
-    secrets = { password = { neededForUsers = true; }; };
+    secrets = {
+      password = { neededForUsers = true; };
+      "k3s/secrets/shkeeper/bitcoin-rpc/username" = { };
+      "k3s/secrets/shkeeper/bitcoin-rpc/password" = { };
+      "k3s/secrets/shkeeper/litecoin-rpc/username" = { };
+      "k3s/secrets/shkeeper/litecoin-rpc/password" = { };
+    };
   };
 
   environment.variables.SOPS_AGE_KEY_FILE = "/etc/age-key";
@@ -16,13 +33,6 @@
   home-manager.users.tom = {
     services.gnome-keyring.enable = true;
 
-    programs.ssh = {
-      enable = true;
-      extraConfig = ''
-        Host *
-            IdentityAgent ~/.1password/agent.sock
-      '';
-    };
     home = {
       packages = with pkgs; [ sops gcr ];
       sessionVariables = { SSH_AUTH_SOCK = "/home/tom/.1password/agent.sock"; };

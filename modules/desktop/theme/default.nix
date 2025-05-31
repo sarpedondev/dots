@@ -8,6 +8,7 @@
   environment.variables = {
     XCURSOR_THEME = "catppuccin-mocha-mauve-cursors";
     XCURSOR_SIZE = "16";
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
   };
 
   home-manager.users.tom = { config, pkgs, ... }: {

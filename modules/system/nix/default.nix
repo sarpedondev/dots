@@ -22,6 +22,7 @@
       pkgs.xorg.libX11
       pkgs.xorg.libXxf86vm
       pkgs.xorg.libXi
+      pkgs.xorg.libXtst
       pkgs.wayland
       pkgs.libxkbcommon
       pkgs.libglvnd
@@ -30,6 +31,7 @@
       pkgs.curl
       pkgs.openssl
       pkgs.glibc
+      pkgs.glib
     ];
   };
 }

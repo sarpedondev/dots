@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   home-manager.users.tom.programs.firefox = {
     enable = true;
     policies = {
@@ -12,14 +11,12 @@
       HardwareAcceleration = true;
     };
     profiles.tom = {
-      settings = {
-        "extensions.autoDisableScopes" = 0;
-      };
+      settings = { "extensions.autoDisableScopes" = 0; };
       search = {
-        default = "DuckDuckGo";
+        default = "ddg";
         force = true;
       };
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         onepassword-password-manager
         ublock-origin
         wappalyzer

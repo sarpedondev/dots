@@ -62,6 +62,8 @@
         update = "sudo nixos-rebuild switch";
         kill-intellij = "pkill -f idea-ultimate";
         nuke = "pkill -f";
+        "docker-nuke-confirm-iam-sure" =
+          "docker stop $(docker ps -aq) && docker rm $(docker ps -aq) && docker rmi -f $(docker images -aq) && docker volume rm $(docker volume ls -q)";
       };
 
       history.size = 10000;

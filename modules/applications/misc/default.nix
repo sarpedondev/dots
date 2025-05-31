@@ -1,10 +1,11 @@
 { pkgs, ... }: {
+  nixpkgs.config.android_sdk.accept_license = true;
   programs.steam.enable = true;
   home-manager.users.tom = {
     programs.gpg.enable = true;
     services.gpg-agent = {
       enable = true;
-      pinentryPackage = pkgs.pinentry-tty;
+      pinentry.package = pkgs.pinentry-tty;
     };
     home.packages = with pkgs; [
       python3
@@ -15,20 +16,35 @@
       mpv
       vdhcoapp
       bottles
+      kdePackages.xwaylandvideobridge
       gedit
       gimp
       filezilla
       tor-browser
       gnome-keyring
-      apktool
       ghex
       spotify
-      #davinci-resolve
+
+      brave
+
+      davinci-resolve-custom
       deepin.dde-file-manager
+      jq
+
+      android-studio
+      android-tools
+      apktool
 
       pkg-config
+      exodus
+      trezor-suite
+      monero-gui
       rustup
+      zig
+      zls
       xorg.xhost
+
+      httptoolkit
 
       pkgs.guarda
       pkgs.conv
@@ -38,6 +54,7 @@
       mongodb-compass
       jetbrains.idea-ultimate
       jetbrains.clion
+
       wmctrl
       jetbrains.pycharm-professional
       jetbrains.rider

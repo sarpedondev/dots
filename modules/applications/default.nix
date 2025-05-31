@@ -1,11 +1,4 @@
-{ ... }:
-{
-  imports = [
-    ./firefox
-    ./kitty
-    ./misc
-    ./neovim
-    ./shell
-    ./virtualization
-  ];
+{ ... }: {
+  imports =
+    [ ./ddrive ./firefox ./kitty ./misc ./neovim ./shell ./virtualization ];
 }

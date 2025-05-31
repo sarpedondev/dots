@@ -19,6 +19,7 @@
         html = { enable = true; };
         ts_ls = { enable = true; };
         tailwindcss = { enable = true; };
+        zls = { enable = true; };
       };
     };
 

@@ -1,8 +1,1 @@
-{ ... }:
-{
-  imports = [
-    ./clipboard
-    ./mullvad
-    ./notifications
-  ];
-}
+{ ... }: { imports = [ ./clipboard ./mullvad ./notifications ./trezord ]; }
