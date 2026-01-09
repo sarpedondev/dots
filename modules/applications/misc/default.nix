@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   nixpkgs.config.android_sdk.accept_license = true;
   programs.steam.enable = true;
   home-manager.users.tom = {
@@ -8,15 +9,14 @@
       pinentry.package = pkgs.pinentry-tty;
     };
     home.packages = with pkgs; [
+      nmap
       python3
       hyprpicker
       vesktop
       grimblast
       vlc
-      mpv
       vdhcoapp
       bottles
-      kdePackages.xwaylandvideobridge
       gedit
       gimp
       filezilla
@@ -28,38 +28,48 @@
       brave
 
       davinci-resolve-custom
-      deepin.dde-file-manager
+
+      nautilus
+      ffmpegthumbnailer
+
       jq
+
+      vulkan-loader
+      vulkan-tools
 
       android-studio
       android-tools
       apktool
+      jadx
+      apksigner
 
       pkg-config
-      exodus
       trezor-suite
       monero-gui
       rustup
       zig
+      ruby_3_4
       zls
       xorg.xhost
 
       httptoolkit
 
+      gemini-cli
+      nicotine-plus
+
       pkgs.guarda
+      ncdu
       pkgs.conv
       hoppscotch
       sushi
-      whatsapp-for-linux
+      wasistlos
       mongodb-compass
       jetbrains.idea-ultimate
-      jetbrains.clion
+      jetbrains.ruby-mine
 
       wmctrl
       jetbrains.pycharm-professional
-      jetbrains.rider
-      jetbrains.rust-rover
-      libsForQt5.polkit-kde-agent
+      kdePackages.polkit-kde-agent-1
       qbittorrent
       prismlauncher
       ffmpeg
@@ -68,7 +78,6 @@
       unrar
       unzip
       eog
-      (wrapOBS { plugins = with obs-studio-plugins; [ droidcam-obs ]; })
       openssl
       htop
       neofetch

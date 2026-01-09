@@ -20,12 +20,10 @@
         sddm = {
           enable = true;
           wayland.enable = true;
-          theme = "catppuccin-mocha";
+          theme = "catppuccin-mocha-mauve";
         };
       };
     };
-    environment.systemPackages = [
-      pkgs.nur.repos.MtFBella109.catppuccin-mocha
-    ];
+    environment.systemPackages = with pkgs; [ catppuccin-sddm ];
   };
 }

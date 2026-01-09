@@ -10,7 +10,7 @@ inputs.nixpkgs.lib.nixosSystem {
     ../../modules
     {
       home-manager.users.tom = {
-        imports = [ inputs.nixvim.homeManagerModules.nixvim ];
+        imports = [ inputs.nixvim.homeModules.nixvim ];
 
         home.file.".steam/steam/steam_dev.cfg".text = ''
           unShaderBackgroundProcessingThreads 8
@@ -22,12 +22,21 @@ inputs.nixpkgs.lib.nixosSystem {
       #  "proc.hidepid" = 2;
       #};
 
+      hardware.xpadneo.enable = true;
+
       nixpkgs.overlays = overlays;
 
       networking.hostName = "neon";
 
-      boot.initrd.availableKernelModules =
-        [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "amdgpu" ];
+      boot.initrd.availableKernelModules = [
+        "nvme"
+        "xhci_pci"
+        "ahci"
+        "usb_storage"
+        "usbhid"
+        "sd_mod"
+        "amdgpu"
+      ];
       #boot.initrd.kernelModules = [ "amdgpu" ];
       boot.kernelModules = [ "kvm-amd" ];
 

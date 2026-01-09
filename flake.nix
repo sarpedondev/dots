@@ -10,7 +10,7 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -22,9 +22,15 @@
     };
   };
 
-  outputs = { nixpkgs, ... }@inputs:
-    let overlays = [ inputs.nur.overlays.default (import ./overlays/pkgs.nix) ];
-    in {
+  outputs =
+    { nixpkgs, ... }@inputs:
+    let
+      overlays = [
+        inputs.nur.overlays.default
+        (import ./overlays/pkgs.nix)
+      ];
+    in
+    {
       nixosConfigurations = {
         neon = import ./hosts/neon { inherit inputs overlays; };
         xenon = import ./hosts/xenon { inherit inputs overlays; };

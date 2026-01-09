@@ -5,6 +5,7 @@
     ./bluetooth
     ./boot
     ./networking
+    ./openrgb
     ./video
   ];
 }

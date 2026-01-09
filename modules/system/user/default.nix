@@ -38,6 +38,6 @@
     isNormalUser = true;
     description = "Tom";
     hashedPasswordFile = config.sops.secrets.password.path;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
   };
 }

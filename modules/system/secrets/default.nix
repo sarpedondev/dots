@@ -1,10 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.ssh = {
     extraConfig = ''
       IdentityAgent ~/.1password/agent.sock
 
-      Host ssh.nebulaclient.zip
+      Host ssh.nebulaclient.net
         ProxyCommand ${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h
+      Host xenon
+        Hostname 192.168.178.131
     '';
   };
 
@@ -19,7 +22,9 @@
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/etc/age-key";
     secrets = {
-      password = { neededForUsers = true; };
+      password = {
+        neededForUsers = true;
+      };
       "k3s/secrets/shkeeper/bitcoin-rpc/username" = { };
       "k3s/secrets/shkeeper/bitcoin-rpc/password" = { };
       "k3s/secrets/shkeeper/litecoin-rpc/username" = { };
@@ -34,8 +39,13 @@
     services.gnome-keyring.enable = true;
 
     home = {
-      packages = with pkgs; [ sops gcr ];
-      sessionVariables = { SSH_AUTH_SOCK = "/home/tom/.1password/agent.sock"; };
+      packages = with pkgs; [
+        sops
+        gcr
+      ];
+      sessionVariables = {
+        SSH_AUTH_SOCK = "/home/tom/.1password/agent.sock";
+      };
     };
   };
 }

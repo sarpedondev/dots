@@ -12,10 +12,6 @@
     networking.wireguard.enable = true;
     services.resolved.enable = true;
     services.mullvad-vpn.enable = true;
-    home-manager.users.tom = {
-      home.packages = with pkgs; [
-        mullvad-vpn
-      ];
-    };
+    services.mullvad-vpn.package = pkgs.mullvad-vpn;
   };
 }

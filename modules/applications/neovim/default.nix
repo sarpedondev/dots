@@ -1,6 +1,10 @@
-{ ... }: {
+{ ... }:
+{
   home-manager.users.tom = {
-    imports = [ ./plugins ./set.nix ];
+    imports = [
+      ./plugins
+      ./set.nix
+    ];
     programs.nixvim = {
       enable = true;
       defaultEditor = true;
@@ -11,9 +15,9 @@
       plugins = {
         auto-save.enable = true;
         web-devicons.enable = true;
-        presence-nvim = {
+        presence = {
           enable = true;
-          mainImage = "file";
+          settings.main_image = "file";
         };
         bufferline = {
           enable = true;
@@ -27,7 +31,7 @@
         treesitter-context.enable = true;
         nvim-tree = {
           enable = true;
-          renderer.groupEmpty = true;
+          settings.renderer.group_empty = true;
         };
         lualine.enable = true;
       };

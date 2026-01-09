@@ -1,17 +1,22 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   home-manager.users.tom = {
     xdg.portal = {
       enable = true;
       config = {
         common = {
-          default = [ "gtk" ];
+          default = [
+            "hyprland"
+            "gtk"
+          ];
+          "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
         };
       };
-      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
+        kdePackages.xdg-desktop-portal-kde
+      ];
     };
   };
 }

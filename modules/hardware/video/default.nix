@@ -16,14 +16,15 @@
       enable32Bit = true;
       extraPackages = lib.mkIf config.hardware.amd.gpu.enable [
         pkgs.rocmPackages.clr.icd
-        pkgs.amdvlk
+        pkgs.mesa.opencl
       ];
     };
     systemd.tmpfiles.rules = lib.mkIf config.hardware.amd.gpu.enable [
       "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
     ];
-    environment.systemPackages = with pkgs; [
-      libva
-    ];
+    environment.systemPackages = with pkgs; [ libva ];
+    environment.variables = {
+      RUSTICL_ENABLE = "radeonsi";
+    };
   };
 }

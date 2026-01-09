@@ -11,7 +11,7 @@
     nssmdns4 = true;
     openFirewall = true;
   };
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
   #systemd.services.NetworkManager-wait-online.enable = false;
   networking.useDHCP = lib.mkDefault true;
   services.printing.enable = true;

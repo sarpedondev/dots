@@ -5,7 +5,6 @@
     home-manager.users.tom = {
       programs.rofi = {
         enable = true;
-        package = pkgs.rofi-wayland;
         extraConfig = {
           modi = "drun";
           icon-theme = "Fluent";

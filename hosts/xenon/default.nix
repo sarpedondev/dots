@@ -8,7 +8,7 @@ inputs.nixpkgs.lib.nixosSystem {
     {
       home-manager.users.tom = {
         imports = [
-          inputs.nixvim.homeManagerModules.nixvim
+          inputs.nixvim.homeModules.nixvim
           inputs.sops-nix.homeManagerModules.sops
         ];
       };
@@ -38,9 +38,9 @@ inputs.nixpkgs.lib.nixosSystem {
         fsType = "vfat";
       };
 
-      swapDevices = [
-        { device = "/dev/disk/by-uuid/b5f5f1ed-b2a6-4bf7-b504-23e380f03557"; }
-      ];
+      swapDevices = [{
+        device = "/dev/disk/by-uuid/b5f5f1ed-b2a6-4bf7-b504-23e380f03557";
+      }];
 
       nixpkgs.hostPlatform = inputs.nixpkgs.lib.mkDefault "x86_64-linux";
       hardware.cpu.amd.updateMicrocode = true;

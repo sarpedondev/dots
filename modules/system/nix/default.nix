@@ -1,6 +1,15 @@
-{ pkgs, config, lib, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+{
   nix = {
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     gc = {
       automatic = true;
       dates = "weekly";
@@ -32,6 +41,12 @@
       pkgs.openssl
       pkgs.glibc
       pkgs.glib
+      pkgs.file
+      pkgs.flite
+      pkgs.zbar
+      pkgs.fontconfig
+      pkgs.freetype
+      pkgs.dbus
     ];
   };
 }
