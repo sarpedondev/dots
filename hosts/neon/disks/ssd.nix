@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   disko.devices.disk.ssd = {
     device = "/dev/sda";
     type = "disk";
@@ -35,7 +36,10 @@
             type = "btrfs";
             extraArgs = [ "-f" ];
             mountpoint = "/home/tom/ssd";
-            mountOptions = [ "compress=zstd" "noatime" ];
+            mountOptions = [
+              "compress=zstd"
+              "noatime"
+            ];
           };
         };
       };

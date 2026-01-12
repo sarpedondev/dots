@@ -1,14 +1,27 @@
-{ lib, stdenv, fetchzip, autoPatchelfHook, makeWrapper, makeDesktopItem
-, copyDesktopItems,
+{
+  lib,
+  stdenv,
+  fetchzip,
+  autoPatchelfHook,
+  makeWrapper,
+  makeDesktopItem,
+  copyDesktopItems,
 
-jetbrains, fontconfig, libgcc, xorg, libGL, alsa-lib, wayland, imagemagick, }:
+  jetbrains,
+  fontconfig,
+  libgcc,
+  xorg,
+  libGL,
+  alsa-lib,
+  wayland,
+  imagemagick,
+}:
 stdenv.mkDerivation (finalAttrs: {
   pname = "jetbrains-fleet";
   version = "2.6.2.41321";
 
   src = fetchzip {
-    url =
-      "https://download-cdn.jetbrains.com/fleet/installers/linux_x64/Fleet-${finalAttrs.version}.tar.gz";
+    url = "https://download-cdn.jetbrains.com/fleet/installers/linux_x64/Fleet-${finalAttrs.version}.tar.gz";
     hash = "sha256-BgUHBN5sOxw/4UHunpjaErZ64o8LPnr42SqFqD327JM=";
     stripRoot = true;
   };
@@ -31,8 +44,12 @@ stdenv.mkDerivation (finalAttrs: {
     wayland
   ];
 
-  nativeBuildInputs =
-    [ autoPatchelfHook makeWrapper copyDesktopItems imagemagick ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+    makeWrapper
+    copyDesktopItems
+    imagemagick
+  ];
 
   installPhase = ''
     runHook preInstall
@@ -74,15 +91,12 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = {
     description = "More Than a Code Editor";
-    longDescription =
-      "Fleet is a code editor designed for simplicity, combining a clean UI, AI capabilities, and an essential set of built-in features for most major languages.";
+    longDescription = "Fleet is a code editor designed for simplicity, combining a clean UI, AI capabilities, and an essential set of built-in features for most major languages.";
     mainProgram = "fleet";
     homepage = "https://www.jetbrains.com/fleet/";
     license = lib.licenses.unfree;
     maintainers = [ lib.maintainers.ivyfanchiang ];
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
-    changelog = "https://www.jetbrains.com/help/fleet/${
-        lib.versions.majorMinor finalAttrs.version
-      }/release-notes-fleet.html";
+    changelog = "https://www.jetbrains.com/help/fleet/${lib.versions.majorMinor finalAttrs.version}/release-notes-fleet.html";
   };
 })

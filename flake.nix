@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nur.url = "github:nix-community/NUR";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,20 +19,21 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quickshell = {
+      url = "github:quickshell-mirror/quickshell/db1777c20b936a86528c1095cbcb1ebd92801402";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, ... }@inputs:
-    let
-      overlays = [
-        inputs.nur.overlays.default
-        (import ./overlays/pkgs.nix)
-      ];
-    in
+    { self, nixpkgs, ... }@inputs:
     {
       nixosConfigurations = {
-        neon = import ./hosts/neon { inherit inputs overlays; };
-        xenon = import ./hosts/xenon { inherit inputs overlays; };
+        neon = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/neon ];
+        };
       };
     };
 }
