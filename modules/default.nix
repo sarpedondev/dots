@@ -1,14 +1,20 @@
 {
   imports = [
     ./hyprland.nix
+    ./hyprlauncher.nix
+    ./hyprpaper.nix
+    ./hyprtoolkit.nix
     ./waybar.nix
     ./fonts.nix
     ./kitty.nix
     ./shell.nix
     ./neovim
+    ./swaync.nix
     ./greetd.nix
+    ./hyprlock.nix
     ./cliphist.nix
     ./git.nix
+    ./bluetooth.nix
     ./secrets.nix
   ];
 }

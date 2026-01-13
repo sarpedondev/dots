@@ -48,7 +48,6 @@
             "custom/right_div-4"
             "network"
             "bluetooth"
-            "custom/system_update"
             "custom/right_div-5"
           ];
           modules-right = [
@@ -70,7 +69,7 @@
               "custom/trigger"
               # "custom/user"
               "tray"
-              # "wlr/taskbar"
+              "wlr/taskbar"
             ];
             drawer = { };
           };
@@ -103,12 +102,6 @@
                 2
                 3
                 4
-                5
-                6
-                7
-                8
-                9
-                10
               ];
             };
             on-scroll-up = "hyprctl dispatch workspace +1";
@@ -266,14 +259,6 @@
             tooltip-format-enumerate-connected-battery = ''
               Device: {device_alias}
               Battery: {device_battery_percentage}%'';
-          };
-
-          "custom/system_update" = {
-            format = "";
-            on-click = "kitty -e rebuild";
-            min-length = 1;
-            max-length = 1;
-            tooltip = false;
           };
 
           "mpris" = {
@@ -670,7 +655,7 @@
             color: @accent;
         }
         #custom-distro {
-            padding: 0 12px 0 4px;
+            padding: 0 6px 0 6px;
             background-color: @accent;
             color: @main-bg;
         }
@@ -700,7 +685,7 @@
             color: @date;
         }
 
-        #network, #bluetooth, #custom-system_update {
+        #network, #bluetooth {
             background-color: @tray;
         }
         #network {
@@ -708,9 +693,6 @@
         }
         #bluetooth {
           padding: 0 5px;
-        }
-        #custom-system_update {
-          padding: 0 8px 0 2px;
         }
         #custom-right_div-5 {
             color: @tray;
@@ -766,7 +748,6 @@
         #clock.date:hover,
         #network:hover,
         #bluetooth:hover,
-        #custom-system_update:hover,
         #mpris:hover,
         #wireplumber:hover {
             color: @hover-fg;
@@ -822,7 +803,7 @@
         @define-color mantle		#181825;
         @define-color crust			#11111b;
 
-        @define-color accent		@lavender;
+        @define-color accent		@mauve;
         @define-color main-br		@subtext0;
         @define-color main-bg		@crust;
         @define-color main-fg		@text;

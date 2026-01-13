@@ -10,7 +10,7 @@
       settings = {
         exec-once = [
           "waybar"
-          "hyprpaper"
+          "hyprlauncher -d"
         ];
         bind = [
           "SUPER, Q, exec, hyprctl dispatch killactive"
@@ -33,13 +33,14 @@
           "SUPER SHIFT, 4, movetoworkspace, 4"
         ];
 
-        bindr = [ "SUPER, SUPER_L, exec, pkill -x rofi || rofi -show drun" ];
+        bindr = [ "SUPER, SUPER_L, exec, hyprlauncher" ];
 
         bindm = [
           "SUPER, mouse:272, movewindow"
           "SUPER, mouse:273, resizewindow"
         ];
 
+        monitor = "LVDS-1,1366x768@59.98900,0x0,1";
         #monitor = "";
         #= [
         #           "HDMI-A-1,1366x768@60,0x0,1,mirror,LVDS-1"
