@@ -21,7 +21,15 @@
     password = "1234";
   };
 
+  monitor = "DP-1,5120x1440@120,0x0,1";
+  wallpaper = {
+    path = "${./.}/wallpaper.jpg";
+    monitor = "DP-1";
+  };
+
   nixpkgs.config.allowUnfree = true;
+  services.hardware.openrgb.enable = true;
+  services.hardware.openrgb.package = pkgs.openrgb-with-all-plugins;
 
   home-manager.users.tom = {
     programs.kitty.enable = true;
@@ -30,6 +38,12 @@
       librewolf
       git
       spotify
+      kdePackages.dolphin
+      jetbrains.idea
+      vlc
+      (blender.override { rocmSupport = true; })
+      vesktop
+      pavucontrol
     ];
   };
   time.timeZone = "Europe/Berlin";
@@ -63,10 +77,13 @@
   networking.networkmanager.enable = true;
   system.stateVersion = "26.05";
 
+  programs.noisetorch.enable = true;
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
+  hardware.amdgpu.opencl.enable = true;
 
   boot.initrd.availableKernelModules = [
     "nvme"

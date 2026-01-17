@@ -1,9 +1,15 @@
+{ pkgs, ... }:
 {
   programs.ssh = {
     extraConfig = ''
       IdentityAgent ~/.1password/agent.sock
+
+      Host ssh.nebulaclient.net
+        ProxyCommand ${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h
     '';
   };
+
+  environment.systemPackages = with pkgs; [ cloudflared ];
 
   programs._1password-gui = {
     enable = true;

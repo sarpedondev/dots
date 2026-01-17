@@ -1,10 +1,12 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
 
-   home-manager.users.tom = {
-        imports = [ inputs.nixvim.homeModules.nixvim 
-./plugins
-./set.nix
-];
+  home-manager.users.tom = {
+    imports = [
+      inputs.nixvim.homeModules.nixvim
+      ./plugins
+      ./set.nix
+    ];
 
     programs.nixvim = {
       enable = true;
@@ -12,6 +14,9 @@
       vimAlias = true;
       clipboard.register = "unnamedplus";
       colorschemes.catppuccin.enable = true;
+      diagnostic.settings = {
+        virtual_lines = true;
+      };
 
       plugins = {
         auto-save.enable = true;
@@ -58,7 +63,12 @@
           key = "<leader>x";
           action = "<cmd>bd<CR><cmd>bprevious<CR>";
         }
+        {
+          mode = "n";
+          key = "<leader>l";
+          action.__raw = ''require("lsp_lines").toggle'';
+        }
       ];
     };
-};
+  };
 }

@@ -22,7 +22,11 @@
     password = "1234";
   };
 
-  wallpaper = "${./.}/wallpaper.jpg";
+  wallpaper = {
+    path = "${./.}/wallpaper.jpg";
+    monitor = "LVDS-1";
+  };
+  monitor = "LVDS-1,1366x768@59.98900,0x0,1";
 
   nixpkgs.config.allowUnfree = true;
 

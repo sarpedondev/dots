@@ -2,6 +2,9 @@
 {
   home.packages = with pkgs; [ nixfmt ];
   programs.nixvim.plugins = {
+    lsp-lines = {
+      enable = true;
+    };
     inc-rename.enable = true;
     lsp = {
       enable = true;

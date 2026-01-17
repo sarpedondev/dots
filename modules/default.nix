@@ -13,6 +13,7 @@
     ./greetd.nix
     ./hyprlock.nix
     ./cliphist.nix
+    ./docker.nix
     ./git.nix
     ./bluetooth.nix
     ./secrets.nix
