@@ -19,25 +19,36 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    quickshell = {
-      url = "github:quickshell-mirror/quickshell/db1777c20b936a86528c1095cbcb1ebd92801402";
+    nur = {
+      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
     { self, nixpkgs, ... }@inputs:
+    let
+      overlays = {
+        nixpkgs.overlays = [ inputs.nur.overlays.default ];
+      };
+    in
     {
       nixosConfigurations = {
         neon = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/neon ];
+          modules = [
+            ./hosts/neon
+            overlays
+          ];
         };
-         xenon = nixpkgs.lib.nixosSystem {
+        helium = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/xenon ];
+          modules = [
+            ./hosts/helium
+            overlays
+          ];
         };
       };
     };

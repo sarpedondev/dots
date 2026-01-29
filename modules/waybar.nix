@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home-manager.users.tom = {
     programs.waybar = {
@@ -803,28 +803,26 @@
         @define-color mantle		#181825;
         @define-color crust			#11111b;
 
-        @define-color accent		@mauve;
-        @define-color main-br		@subtext0;
-        @define-color main-bg		@crust;
-        @define-color main-fg		@text;
-        @define-color hover-bg		@base;
-        @define-color hover-fg		alpha(@main-fg, 0.75);
-        @define-color outline		shade(@main-bg, 0.5);
-
-        @define-color workspaces	@mantle;
-        @define-color temperature	@mantle;
-        @define-color memory		@base;
-        @define-color cpu			@surface0;
-        @define-color time			@surface0;
-        @define-color date			@base;
-        @define-color tray			@mantle;
-        @define-color volume		@mantle;
-        @define-color backlight		@base;
-        @define-color battery		@surface0;
-
-        @define-color warning		@yellow;
-        @define-color critical		@red;
-        @define-color charging		@green;
+        @define-color accent ${config.theme.colors.accent0.hex};
+        @define-color main-br ${config.theme.colors.border.hex};
+        @define-color main-bg ${config.theme.colors.bg0.hex};
+        @define-color main-fg ${config.theme.colors.fg0.hex};
+        @define-color hover-bg ${config.theme.colors.bg1.hex};
+        @define-color workspaces ${config.theme.colors.bg2.hex};
+        @define-color temperature ${config.theme.colors.bg2.hex};
+        @define-color memory ${config.theme.colors.bg1.hex};
+        @define-color cpu ${config.theme.colors.bg3.hex};
+        @define-color time ${config.theme.colors.bg3.hex};
+        @define-color date ${config.theme.colors.bg1.hex};
+        @define-color tray ${config.theme.colors.bg2.hex};
+        @define-color volume ${config.theme.colors.bg2.hex};
+        @define-color backlight ${config.theme.colors.bg1.hex};
+        @define-color battery ${config.theme.colors.bg3.hex};
+        @define-color warning ${config.theme.colors.yellow.hex};
+        @define-color critical ${config.theme.colors.red.hex};
+        @define-color charging ${config.theme.colors.green.hex};
+        @define-color hover-fg alpha(@main-fg, 0.75);
+        @define-color outline shade(@main-bg, 0.5);
       '';
     };
   };

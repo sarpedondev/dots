@@ -34,17 +34,6 @@
   home-manager.users.tom = {
     programs.kitty.enable = true;
     home.stateVersion = "26.05";
-    home.packages = with pkgs; [
-      librewolf
-      git
-      spotify
-      kdePackages.dolphin
-      jetbrains.idea
-      vlc
-      (blender.override { rocmSupport = true; })
-      vesktop
-      pavucontrol
-    ];
   };
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";

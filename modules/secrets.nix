@@ -16,6 +16,11 @@
     polkitPolicyOwners = [ "tom" ];
   };
 
+  environment.etc."1password/custom_allowed_browsers" = {
+    text = "librewolf";
+    mode = "0755";
+  };
+
   security.polkit.enable = true;
   home-manager.users.tom = {
     home = {

@@ -1,7 +1,7 @@
 { lib, config, ... }:
 {
   options = {
-    monitor = lib.mkOption { type = lib.types.str; };
+    monitors = lib.mkOption { type = lib.types.listOf lib.types.str; };
   };
   config = {
     programs.hyprland = {
@@ -16,6 +16,7 @@
           exec-once = [
             "waybar"
             "hyprlauncher -d"
+            "1password --silent"
           ];
           bind = [
             "SUPER, Q, exec, hyprctl dispatch killactive"
@@ -45,18 +46,16 @@
             "SUPER, mouse:273, resizewindow"
           ];
 
-          monitor = config.monitor;
-          #monitor = "";
-          #= [
-          #           "HDMI-A-1,1366x768@60,0x0,1,mirror,LVDS-1"
-          #        ];
+          monitor = config.monitors;
 
           general = {
             gaps_in = 3;
             gaps_out = 8;
             border_size = 2;
-            "col.active_border" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-            "col.inactive_border" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
+            "col.active_border" =
+              "rgba(${lib.removePrefix "#" config.theme.colors.accent0.hex}ff) rgba(${lib.removePrefix "#" config.theme.colors.accent1.hex}ff) 45deg";
+            "col.inactive_border" =
+              "rgba(${lib.removePrefix "#" config.theme.colors.border.hex}cc) rgba(${lib.removePrefix "#" config.theme.colors.bg2.hex}cc) 45deg";
             layout = "dwindle";
             resize_on_border = true;
           };
@@ -107,8 +106,8 @@
           };
 
           misc = {
-            force_default_wallpaper = 0; # Set to 0 or 1 to disable the anime mascot wallpapers
-            disable_hyprland_logo = true; # If true disables the random hyprland logo / anime girl background. :(
+            force_default_wallpaper = 0;
+            disable_hyprland_logo = true;
           };
         };
       };

@@ -2,7 +2,7 @@
 {
   disko.devices = {
     disk.main = {
-      device = "/dev/sda";
+      device = "/dev/nvme0n1";
       type = "disk";
       content = {
         type = "gpt";
@@ -18,10 +18,30 @@
             };
           };
           swap = {
-            size = "8G";
+            size = "32G";
             content = {
               type = "swap";
               resumeDevice = true;
+            };
+          };
+          reserved = {
+            size = "16M"; # Microsoft Reserved Partition
+            type = "0C01";
+          };
+          win = {
+            size = "250G"; # Microsoft Basic Data
+            type = "0700";
+            content = {
+              type = "filesystem";
+              format = "ntfs";
+            };
+          };
+          recovery = {
+            size = "300M"; # Windows Recovery Environment
+            type = "2700";
+            content = {
+              type = "filesystem";
+              format = "ntfs";
             };
           };
           root = {

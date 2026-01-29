@@ -10,9 +10,13 @@
     ./shell.nix
     ./neovim
     ./swaync.nix
+    ./locale.nix
+    ./palette.nix
     ./greetd.nix
+    ./applications.nix
     ./hyprlock.nix
     ./cliphist.nix
+    ./librewolf.nix
     ./docker.nix
     ./git.nix
     ./bluetooth.nix
