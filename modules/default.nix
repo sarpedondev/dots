@@ -23,5 +23,10 @@
     ./secrets.nix
     ./nix.nix
     ./java.nix
+    ./users.nix
+    ./misc.nix
+    ./network.nix
+    ./hardware.nix
+    ./boot.nix
   ];
 }
