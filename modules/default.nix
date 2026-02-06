@@ -21,5 +21,7 @@
     ./git.nix
     ./bluetooth.nix
     ./secrets.nix
+    ./nix.nix
+    ./java.nix
   ];
 }

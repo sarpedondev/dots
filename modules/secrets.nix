@@ -21,12 +21,16 @@
     mode = "0755";
   };
 
+  security.pam.services.login.enableGnomeKeyring = true;
+
   security.polkit.enable = true;
   home-manager.users.tom = {
     home = {
+      packages = with pkgs; [ gcr ];
       sessionVariables = {
         SSH_AUTH_SOCK = "/home/tom/.1password/agent.sock";
       };
     };
+    services.gnome-keyring.enable = true;
   };
 }

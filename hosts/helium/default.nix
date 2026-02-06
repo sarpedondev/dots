@@ -17,13 +17,17 @@
     password = "1234";
   };
 
+  services.udev.extraRules = ''
+    SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", MODE="0666"
+  '';
+
   wallpaper = {
     path = "${./.}/wallpaper.png";
     monitor = "eDP-1";
   };
 
   monitors = [
-    "eDP-1,2560x1600@165,0x0,1"
+    "eDP-1,2560x1600@165,0x0,1.25"
     #"eDP-1,1920x1080@165,0x0,1"
     "DP-4,1920x1080@60,0x0,1,mirror,eDP-1"
   ];

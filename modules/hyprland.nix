@@ -23,7 +23,8 @@
             "SUPER, W, togglefloating"
             "ALT, space, fullscreen"
             "SUPER, T, exec, kitty"
-            ", print, exec, grimblast copy area --freeze"
+            ", print, exec, grimblast --freeze copy area"
+            ''SUPER SHIFT, S, exec, grimblast --notify --freeze --filetype png copysave area "/home/tom/Pictures/Screenshots/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png"''
             "SUPER, V, exec, pkill -x rofi || TODO clipboard"
             "SUPER, left, movefocus, l"
             "SUPER, right, movefocus, r"
@@ -47,6 +48,9 @@
           ];
 
           monitor = config.monitors;
+          xwayland = {
+            force_zero_scaling = true;
+          };
 
           general = {
             gaps_in = 3;
@@ -71,12 +75,6 @@
               xray = false;
             };
           };
-
-          windowrulev2 = [
-            "noinitialfocus,class:^jetbrains-(?!toolbox),floating:1"
-            "noinitialfocus,class:^1Password,floating:1"
-            "noblur,title:RedTide"
-          ];
 
           animations = {
             enabled = true;
