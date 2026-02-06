@@ -9,9 +9,6 @@
         reserved = {
           size = "16M"; # Microsoft Reserved Partition
           type = "0C01";
-          #content = {
-          # type = "filesystem"; # Use an EFI partition for reserved space
-          # };
         };
         win = {
           size = "350G"; # Microsoft Basic Data (~40 GB)
@@ -19,7 +16,7 @@
           content = {
             type = "filesystem";
             format = "ntfs";
-            #mountpoint = "/mnt/ntfs"; # Adjust as needed
+            extraArgs = [ "-Q" ];
           };
         };
         recovery = {
@@ -28,6 +25,7 @@
           content = {
             type = "filesystem";
             format = "ntfs";
+            extraArgs = [ "-Q" ];
           };
         };
         data = {
