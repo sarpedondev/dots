@@ -5,6 +5,7 @@
     vesktop
     bun
     nodejs
+    zig
     spotify
     prismlauncher
     kdePackages.dolphin
