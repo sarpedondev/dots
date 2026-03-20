@@ -64,6 +64,14 @@
             resize_on_border = true;
           };
 
+          windowrule = [
+            {
+              name = "fixintellij";
+              "match:class" = "jetbrains-idea";
+              no_initial_focus = "on";
+            }
+          ];
+
           decoration = {
             rounding = 10;
             blur = {

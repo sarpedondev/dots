@@ -14,12 +14,14 @@
     ./palette.nix
     ./greetd.nix
     ./applications.nix
+    ./misc.nix
     ./hyprlock.nix
     ./cliphist.nix
     ./librewolf.nix
     ./docker.nix
     ./git.nix
     ./bluetooth.nix
+    ./printing.nix
     ./secrets.nix
     ./nix.nix
     ./java.nix
