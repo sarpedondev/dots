@@ -1,78 +1,67 @@
-{
-  pkgs,
-  lib,
-  inputs,
-  config,
-  ...
-}:
+{ pkgs, inputs, ... }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    inputs.disko.nixosModules.default
     ../../modules
+    ./disks/nvme.nix
+    ./disks/ssd.nix
+  ]
+  ++ [
+    ../../optional/openrgb.nix
+    ../../optional/noisetorch.nix
   ];
-  users.users.tom = {
-    isNormalUser = true;
-    description = "Me";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "video"
-    ];
-    password = "1234";
-  };
 
-  monitor = "DP-1,5120x1440@120,0x0,1";
+  networking.hostName = "neon";
+  system.stateVersion = "26.05";
+  home-manager.users.tom.home.stateVersion = "26.05";
+
+  monitors = [ "DP-1,5120x1440@120,0x0,1" ];
   wallpaper = {
     path = "${./.}/wallpaper.jpg";
     monitor = "DP-1";
   };
 
-  nixpkgs.config.allowUnfree = true;
-  services.hardware.openrgb.enable = true;
-  services.hardware.openrgb.package = pkgs.openrgb-with-all-plugins;
+  theme = {
+    enable = true;
+    palette = {
+      bg0 = "#11111b";
+      bg1 = "#181825";
+      bg2 = "#1e1e2e";
+      bg3 = "#313244";
 
-  home-manager.users.tom = {
-    programs.kitty.enable = true;
-    home.stateVersion = "26.05";
-  };
-  time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
-  };
-  nix = {
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "-d";
+      fg0 = "#cdd6f4";
+      fg1 = "#bac2de";
+      fg2 = "#a6adc8";
+      comment = "#7f849c";
+
+      accent0 = "#cba6f7";
+      accent1 = "#b4befe";
+      accent2 = "#f5c2e7";
+      accent3 = "#f5e0dc";
+
+      red = "#f38ba8";
+      orange = "#fab387";
+      yellow = "#f9e2af";
+      green = "#a6e3a1";
+      cyan = "#89dceb";
+      blue = "#89b4fa";
+      purple = "#b4befe";
+      magenta = "#f5c2e7";
+      teal = "#94e2d5";
+      brown = "#eba0ac";
+
+      border = "#6c7086";
+      shadow = "#11111b";
+      selection = "#585b70";
+      cursor = "#cba6f7";
     };
   };
-  console.keyMap = "de";
-  networking.hostName = "neon";
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  networking.networkmanager.enable = true;
-  system.stateVersion = "26.05";
 
-  programs.noisetorch.enable = true;
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  hardware = {
+    amdgpu.opencl.enable = true;
+    cpu.amd.updateMicrocode = true;
   };
-  hardware.amdgpu.opencl.enable = true;
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -82,27 +71,4 @@
     "usb_storage"
     "sd_mod"
   ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/102cdca0-9204-42dc-8831-a7462fb1e718";
-    fsType = "btrfs";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/397B-735E";
-    fsType = "vfat";
-    options = [
-      "fmask=0022"
-      "dmask=0022"
-    ];
-  };
-
-  swapDevices = [ { device = "/dev/disk/by-uuid/2bfa4a15-b233-49ad-8a0e-41d6fde21950"; } ];
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = true;
-  hardware.enableRedistributableFirmware = true;
 }

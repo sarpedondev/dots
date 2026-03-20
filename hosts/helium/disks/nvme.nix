@@ -43,6 +43,7 @@
             content = {
               type = "filesystem";
               format = "ntfs";
+              extraArgs = [ "-Q" ];
             };
           };
           root = {
