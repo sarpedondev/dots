@@ -8,6 +8,8 @@
     nodejs
     recaf-launcher
     zig
+    jq
+    unzip
     spotify
     prismlauncher
     kdePackages.dolphin
