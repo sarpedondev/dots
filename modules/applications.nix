@@ -20,6 +20,7 @@
     (blender.override { rocmSupport = true; })
     pavucontrol
     qFlipper
+    gh
   ];
   services.teamviewer.enable = true;
 }
