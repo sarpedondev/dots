@@ -30,5 +30,6 @@
     ./network.nix
     ./hardware.nix
     ./boot.nix
+    ./mullvad.nix
   ];
 }
