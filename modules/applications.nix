@@ -23,7 +23,9 @@
     jq
     unzip
     spotify
-    prismlauncher
+    (prismlauncher.override {
+      additionalLibs = [ pkgs.openssl ];
+    })
     kdePackages.dolphin
     grimblast
     unzip
