@@ -3,9 +3,10 @@ let
   additionalJDKs = with pkgs; [
     zulu8
     zulu11
+    zulu17
     (pkgs.zulu.override { enableJavaFX = true; })
   ];
-  mainJDK = pkgs.zulu17;
+  mainJDK = pkgs.zulu25;
 in
 {
   home-manager.users.tom = {

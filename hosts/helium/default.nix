@@ -72,5 +72,8 @@
 
   services.fwupd.enable = true;
 
-  hardware.cpu.amd.updateMicrocode = true;
+  hardware = {
+    amdgpu.opencl.enable = true;
+    cpu.amd.updateMicrocode = true;
+  };
 }

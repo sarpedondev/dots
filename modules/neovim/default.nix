@@ -22,7 +22,7 @@
         auto-save.enable = true;
         web-devicons.enable = true;
         presence = {
-          enable = true;
+          enable = false; # TODO enable again when not falsely marked as unfree
           settings.main_image = "file";
         };
         bufferline = {

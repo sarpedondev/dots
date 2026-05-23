@@ -18,12 +18,12 @@
   programs.nix-ld = {
     enable = true;
     libraries = [
-      pkgs.xorg.libXcursor
-      pkgs.xorg.libXrandr
-      pkgs.xorg.libX11
-      pkgs.xorg.libXxf86vm
-      pkgs.xorg.libXi
-      pkgs.xorg.libXtst
+      pkgs.libXcursor
+      pkgs.libXrandr
+      pkgs.libX11
+      pkgs.libXxf86vm
+      pkgs.libXi
+      pkgs.libXtst
       pkgs.wayland
       pkgs.libxkbcommon
       pkgs.libglvnd

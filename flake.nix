@@ -23,13 +23,19 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    claude-desktop.url = "github:aaddrick/claude-desktop-debian";
   };
 
   outputs =
     { self, nixpkgs, ... }@inputs:
     let
       overlays = {
-        nixpkgs.overlays = [ inputs.nur.overlays.default ];
+        nixpkgs.overlays = [
+          inputs.nur.overlays.default
+          inputs.claude-desktop.overlays.default
+          (import ./overlays/pkgs.nix)
+          (import ./overlays/_1password-cli-beta.nix)
+        ];
       };
     in
     {

@@ -5,9 +5,21 @@
     vesktop
     bun
     claude-code
+    codex
+    cfr
+
+    ffmpeg
+    fastfetch
+
+    davinci-resolve-custom
+    audacity
+
     nodejs
     recaf-launcher
     zig
+    qbittorrent
+    p7zip
+    imagemagick
     jq
     unzip
     spotify
@@ -25,4 +37,6 @@
     gh
   ];
   services.teamviewer.enable = true;
+  programs.steam.enable = true;
+  services.gvfs.enable = true;
 }
