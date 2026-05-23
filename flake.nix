@@ -34,7 +34,6 @@
           inputs.nur.overlays.default
           inputs.claude-desktop.overlays.default
           (import ./overlays/pkgs.nix)
-          (import ./overlays/_1password-cli-beta.nix)
         ];
       };
     in

@@ -31,8 +31,5 @@
     ./hardware.nix
     ./boot.nix
     ./mullvad.nix
-
-    ./komodo.nix
-    ./komodo-periphery.nix
   ];
 }

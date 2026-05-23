@@ -30,7 +30,6 @@
     home = {
       packages = with pkgs; [
         gcr
-        _1password-cli
       ];
       sessionVariables = {
         SSH_AUTH_SOCK = "/home/tom/.1password/agent.sock";
