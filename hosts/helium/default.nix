@@ -12,8 +12,18 @@
   home-manager.users.tom.home.stateVersion = "26.05";
 
   monitors = [
-    "eDP-1,2560x1600@165,0x0,1.25"
-    "DP-4,1920x1080@60,0x0,1,mirror,eDP-1"
+    {
+      output = "DP-1";
+      mode = "3440x1440@165";
+      position = "0x0";
+      scale = 1;
+    }
+    {
+      output = "HDMI-A-1";
+      mode = "1920x1080@60";
+      position = "3440x0";
+      scale = 1;
+    }
   ];
 
   wallpaper = {

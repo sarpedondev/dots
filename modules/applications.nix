@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home-manager.users.tom.home.packages = with pkgs; [
     filezilla

@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ inputs, ... }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -16,7 +16,15 @@
   system.stateVersion = "26.05";
   home-manager.users.tom.home.stateVersion = "26.05";
 
-  monitors = [ "DP-1,5120x1440@120,0x0,1" ];
+  monitors = [
+    {
+      output = "DP-1";
+      mode = "5120x1440@120";
+      position = "0x0";
+      scale = 1;
+    }
+  ];
+
   wallpaper = {
     path = "${./.}/wallpaper.jpg";
     monitor = "DP-1";
