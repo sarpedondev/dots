@@ -25,6 +25,7 @@ in
       default = [ ];
     };
   };
+
   config = {
     programs.hyprland = {
       enable = true;
@@ -58,10 +59,11 @@ in
             (bind "SUPER + T" ''hl.dsp.exec_cmd("kitty")'')
             (bind "Print" ''hl.dsp.exec_cmd("grimblast --freeze copy area")'')
             (bind "SUPER + SHIFT + S" ''hl.dsp.exec_cmd("grimblast --notify --freeze --filetype png copysave area \"/home/tom/Pictures/Screenshots/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png\"")'')
-            (bind "SUPER + left" ''hl.dsp.focus({ direction = "left" })'')
-            (bind "SUPER + right" ''hl.dsp.focus({ direction = "right" })'')
-            (bind "SUPER + up" ''hl.dsp.focus({ direction = "up" })'')
-            (bind "SUPER + down" ''hl.dsp.focus({ direction = "down" })'')
+            (bind "SUPER + V" ''hl.dsp.exec_cmd("pkill -x rofi || TODO clipboard")'')
+            (bind "SUPER + left" ''hl.dsp.focus({ direction = "l" })'')
+            (bind "SUPER + right" ''hl.dsp.focus({ direction = "r" })'')
+            (bind "SUPER + up" ''hl.dsp.focus({ direction = "u" })'')
+            (bind "SUPER + down" ''hl.dsp.focus({ direction = "d" })'')
             (bind "SUPER + 1" "hl.dsp.focus({ workspace = 1 })")
             (bind "SUPER + 2" "hl.dsp.focus({ workspace = 2 })")
             (bind "SUPER + 3" "hl.dsp.focus({ workspace = 3 })")
@@ -247,6 +249,7 @@ in
                 enabled = true;
                 size = 6;
                 passes = 3;
+                new_optimizations = true;
                 ignore_opacity = true;
                 xray = false;
               };
@@ -276,6 +279,7 @@ in
           };
 
           window_rule = {
+            name = "fixintellij";
             match.class = "jetbrains-idea";
             no_initial_focus = true;
           };
