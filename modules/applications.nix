@@ -37,8 +37,29 @@
     pavucontrol
     qFlipper
     gh
+
+    apktool
+    jadx
+    file
+    python3
+    android-tools
+    rizin
+    binutils-unwrapped-all-targets
+    apksigner
+    frida-tools
+    httptoolkit
   ];
   services.teamviewer.enable = true;
   programs.steam.enable = true;
   services.gvfs.enable = true;
+  networking.firewall.allowedTCPPorts = [ 8080 ];
+  services.dnsmasq = {
+    enable = true;
+    settings = {
+      address = [
+        "/nemo.apps.tapulous.com/192.168.178.44"
+        "/nemo.pragueweb.tapulous.com/192.168.178.44"
+      ];
+    };
+  };
 }
