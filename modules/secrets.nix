@@ -27,6 +27,9 @@
   security.pam.services.greetd.enableGnomeKeyring = true;
   security.polkit.enable = true;
 
+  systemd.user.services.gcr-ssh-agent.enable = false;
+  systemd.user.sockets.gcr-ssh-agent.enable = false;
+
   home-manager.users.tom = {
     home = {
       packages = with pkgs; [
@@ -35,6 +38,9 @@
       sessionVariables = {
         SSH_AUTH_SOCK = "/home/tom/.1password/agent.sock";
       };
+    };
+    systemd.user.sessionVariables = {
+      SSH_AUTH_SOCK = "/home/tom/.1password/agent.sock";
     };
     services.gnome-keyring = {
       enable = true;
