@@ -23,9 +23,10 @@
     mode = "0755";
   };
 
-  security.pam.services.login.enableGnomeKeyring = true;
-
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
   security.polkit.enable = true;
+
   home-manager.users.tom = {
     home = {
       packages = with pkgs; [
@@ -35,6 +36,11 @@
         SSH_AUTH_SOCK = "/home/tom/.1password/agent.sock";
       };
     };
-    services.gnome-keyring.enable = true;
+    services.gnome-keyring = {
+      enable = true;
+      components = [
+        "secrets"
+      ];
+    };
   };
 }
