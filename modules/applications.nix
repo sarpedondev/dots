@@ -9,6 +9,7 @@
       codex
       cfr
 
+      eog
       ffmpeg
       fastfetch
 
@@ -57,6 +58,8 @@
       apksigner
       frida-tools
       httptoolkit
+
+      ghidra
     ];
     programs.thunderbird.enable = true;
   };
