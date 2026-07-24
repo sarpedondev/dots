@@ -41,7 +41,12 @@
       tutanota-desktop
 
       (mongodb-compass.overrideAttrs (old: {
-        buildCommand = old.buildCommand + ''
+        buildCommand =
+          builtins.replaceStrings
+            [ "wrapGAppsHook $out/bin/mongodb-compass" ]
+            [ "wrapGApp $out/bin/mongodb-compass" ]
+            old.buildCommand
+          + ''
           substituteInPlace $out/share/applications/mongodb-compass.desktop \
             --replace-fail "Exec=mongodb-compass %U" \
                            "Exec=mongodb-compass --password-store=gnome-libsecret --ignore-additional-command-line-flags %U"
