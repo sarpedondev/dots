@@ -1,19 +1,24 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   home-manager.users.tom = {
     home.packages = with pkgs; [
       filezilla
       vesktop
       bun
-      claude-code
-      codex
+      inputs.codex-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+      bubblewrap
       cfr
 
       eog
       ffmpeg
       fastfetch
 
-      davinci-resolve-custom
+      #davinci-resolve-custom
       audacity
 
       nodejs
@@ -33,6 +38,7 @@
       unzip
       google-chrome
       vlc
+      tutanota-desktop
 
       (mongodb-compass.overrideAttrs (old: {
         buildCommand = old.buildCommand + ''
@@ -61,7 +67,6 @@
 
       ghidra
     ];
-    programs.thunderbird.enable = true;
   };
   services.teamviewer.enable = true;
   programs.steam.enable = true;

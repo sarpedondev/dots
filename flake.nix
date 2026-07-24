@@ -23,7 +23,7 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    claude-desktop.url = "github:aaddrick/claude-desktop-debian";
+    codex-nix.url = "github:sarpedondev/codex-nix";
   };
 
   outputs =
@@ -32,7 +32,6 @@
       overlays = {
         nixpkgs.overlays = [
           inputs.nur.overlays.default
-          inputs.claude-desktop.overlays.default
           (import ./overlays/pkgs.nix)
         ];
       };
