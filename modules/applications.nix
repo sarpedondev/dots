@@ -47,10 +47,10 @@
             [ "wrapGApp $out/bin/mongodb-compass" ]
             old.buildCommand
           + ''
-          substituteInPlace $out/share/applications/mongodb-compass.desktop \
-            --replace-fail "Exec=mongodb-compass %U" \
-                           "Exec=mongodb-compass --password-store=gnome-libsecret --ignore-additional-command-line-flags %U"
-        '';
+            substituteInPlace $out/share/applications/mongodb-compass.desktop \
+              --replace-fail "Exec=mongodb-compass %U" \
+                             "Exec=mongodb-compass --password-store=gnome-libsecret --ignore-additional-command-line-flags %U"
+          '';
       }))
 
       jetbrains.idea
