@@ -23,7 +23,6 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    codex-nix.url = "github:sarpedondev/codex-nix";
   };
 
   outputs =

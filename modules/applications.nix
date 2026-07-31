@@ -10,8 +10,6 @@
       filezilla
       vesktop
       bun
-      inputs.codex-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
-      bubblewrap
       cfr
 
       eog
@@ -74,7 +72,7 @@
     ];
   };
   services.teamviewer.enable = true;
-  programs.steam.enable = true;
+  #programs.steam.enable = true;
   services.gvfs.enable = true;
   networking.firewall.allowedTCPPorts = [ 8080 ];
 }

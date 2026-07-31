@@ -31,6 +31,6 @@
     ./hardware.nix
     ./boot.nix
     ./mullvad.nix
-    ./ollama.nix
+    ./codex.nix
   ];
 }
