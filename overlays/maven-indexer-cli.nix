@@ -19,6 +19,11 @@ buildNpmPackage rec {
 
   npmBuildScript = "build";
 
+  postInstall = ''
+    install -Dm444 ${src}/lib/cfr-0.152.jar \
+      $out/lib/node_modules/maven-indexer-cli/dist/lib/cfr-0.152.jar
+  '';
+
   meta = {
     description = "Query a local Maven/Gradle artifact index";
     homepage = "https://github.com/tangcent/maven-indexer-cli";
