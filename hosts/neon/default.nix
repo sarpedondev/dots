@@ -5,7 +5,7 @@
     inputs.disko.nixosModules.default
     ../../modules
     ./disks/nvme.nix
-    ./disks/ssd.nix
+    #   ./disks/ssd.nix
   ]
   ++ [
     ../../optional/openrgb.nix
