@@ -39,12 +39,7 @@
       unzip
       google-chrome
       vlc
-      (tutanota-desktop.overrideAttrs (old: {
-        postInstall = (old.postInstall or "") + ''
-          substituteInPlace $out/share/applications/tutanota-desktop.desktop \
-            --replace-fail "Exec=tutanota-desktop" "Exec=$out/bin/tutanota-desktop"
-        '';
-      }))
+      tutanota-desktop
 
       (mongodb-compass.overrideAttrs (old: {
         buildCommand =
