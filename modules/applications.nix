@@ -11,6 +11,7 @@
       vesktop
       bun
       cfr
+      stripe-cli
 
       eog
       ffmpeg
@@ -33,10 +34,17 @@
       })
       kdePackages.dolphin
       grimblast
+      gimp
+      inkscape
       unzip
       google-chrome
       vlc
-      tutanota-desktop
+      (tutanota-desktop.overrideAttrs (old: {
+        postInstall = (old.postInstall or "") + ''
+          substituteInPlace $out/share/applications/tutanota-desktop.desktop \
+            --replace-fail "Exec=tutanota-desktop" "Exec=$out/bin/tutanota-desktop"
+        '';
+      }))
 
       (mongodb-compass.overrideAttrs (old: {
         buildCommand =

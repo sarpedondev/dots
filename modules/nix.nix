@@ -14,6 +14,11 @@
       options = "-d";
     };
   };
+  home-manager.users.tom.nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "-d";
+  };
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [

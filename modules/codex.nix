@@ -26,6 +26,7 @@
 
   home-manager.users.tom = { lib, ... }: {
     home.packages = with pkgs; [
+      t3code
       playwright-mcp
       chromium
       maven-indexer-cli
