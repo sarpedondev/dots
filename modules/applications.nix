@@ -72,10 +72,14 @@
       httptoolkit
 
       ghidra
+
+      trezor-suite
     ];
   };
   services.teamviewer.enable = true;
   #programs.steam.enable = true;
   services.gvfs.enable = true;
   networking.firewall.allowedTCPPorts = [ 8080 ];
+
+  services.trezord.enable = true;
 }
