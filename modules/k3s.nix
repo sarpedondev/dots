@@ -4,7 +4,6 @@
     enable = true;
     role = "server";
 
-    # Use the same datastore as a production HA cluster instead of SQLite.
     clusterInit = true;
 
     extraFlags = [
@@ -20,5 +19,6 @@
   environment.systemPackages = with pkgs; [
     kubectl
     kubernetes-helm
+    fluxcd
   ];
 }

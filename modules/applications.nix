@@ -72,6 +72,7 @@
       httptoolkit
 
       ghidra
+      scrcpy
 
       trezor-suite
     ];
