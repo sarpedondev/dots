@@ -10,6 +10,7 @@
       filezilla
       vesktop
       bun
+      openssl
       cfr
       stripe-cli
 
@@ -72,6 +73,7 @@
       httptoolkit
 
       ghidra
+      binaryninja-free
       scrcpy
 
       trezor-suite
