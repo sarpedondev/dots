@@ -25,7 +25,6 @@
     ./secrets.nix
     ./nix.nix
     ./java.nix
-    ./k3s.nix
     ./users.nix
     ./misc.nix
     ./network.nix
