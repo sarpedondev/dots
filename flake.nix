@@ -23,10 +23,16 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    codex-nix.url = "github:SecBear/codex-nix";
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      codex-nix,
+      ...
+    }@inputs:
     let
       overlays = {
         nixpkgs.overlays = [

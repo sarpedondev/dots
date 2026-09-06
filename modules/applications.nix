@@ -13,6 +13,7 @@
       openssl
       cfr
       stripe-cli
+      devenv
 
       eog
       ffmpeg
