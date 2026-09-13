@@ -33,7 +33,7 @@
   home-manager.users.tom = {
     home = {
       packages = with pkgs; [
-        gcr
+        gcr_4
       ];
       sessionVariables = {
         SSH_AUTH_SOCK = "/home/tom/.1password/agent.sock";
