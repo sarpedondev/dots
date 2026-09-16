@@ -62,6 +62,8 @@
       qFlipper
       gh
 
+      htop
+
       apktool
       jadx
       file
