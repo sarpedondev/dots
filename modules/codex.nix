@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 {
   environment.etc."codex/config.toml".source =
     (pkgs.formats.toml { }).generate "codex-system-config.toml"
@@ -29,6 +34,23 @@
             ];
           };
         };
+
+        #model = "stealth/union-alpha";
+        #model_provider = "openrouter";
+
+        #model_providers = {
+        #    openrouter = {
+        #      name = "OpenRouter";
+        #      base_url = "https://openrouter.ai/api/v1";
+        #      wire_api = "responses";
+        #      auth = {
+        #        command = "cat";
+        #        args = [
+        #          config.sops.secrets.openrouter-api-key.path
+        #        ];
+        #      };
+        #    };
+        #  };
       };
 
   home-manager.users.tom = { lib, ... }: {

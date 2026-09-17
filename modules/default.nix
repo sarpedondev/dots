@@ -32,5 +32,6 @@
     ./boot.nix
     ./mullvad.nix
     ./codex.nix
+    ./sops
   ];
 }

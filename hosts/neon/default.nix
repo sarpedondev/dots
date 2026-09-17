@@ -3,6 +3,7 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.default
+    inputs.sops-nix.nixosModules.sops
     ../../modules
     ./disks/nvme.nix
     #   ./disks/ssd.nix
