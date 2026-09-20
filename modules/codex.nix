@@ -60,6 +60,7 @@
       chromium
       maven-indexer-cli
       bubblewrap
+      opencode
     ];
     home.file.".agents/skills/maven-indexer".source =
       "${pkgs.maven-indexer-cli.src}/skills/maven-indexer";
