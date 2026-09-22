@@ -5,7 +5,7 @@
       settings = {
         user = {
           name = "sarpedon";
-          email = "sarpedon.dev@gmail.com";
+          email = "99533320+sarpedondev@users.noreply.github.com";
         };
         gpg.format = "ssh";
         gpg."ssh".program = "/run/current-system/sw/bin/op-ssh-sign";
