@@ -70,7 +70,7 @@
     programs.codex = {
       enable = true;
       settings = null;
-      package = inputs.codex-nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      package = inputs.codex-cli-nix.packages.${pkgs.system}.default;
     };
   };
 }

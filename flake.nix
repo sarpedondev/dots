@@ -23,14 +23,14 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    codex-nix.url = "github:SecBear/codex-nix";
+    codex-cli-nix.url = "github:sadjow/codex-cli-nix";
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      codex-nix,
+      codex-cli-nix,
       ...
     }@inputs:
     let

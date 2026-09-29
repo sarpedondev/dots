@@ -22,6 +22,8 @@
       #davinci-resolve-custom
       audacity
 
+      redis
+
       nodejs
       recaf-launcher
       zig
