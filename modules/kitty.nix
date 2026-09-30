@@ -9,6 +9,7 @@
         size = 11.0;
       };
       settings = {
+        remember_window_size = false;
         window_padding_width = 15;
         hide_window_decorations = true;
         allow_remote_control = true;
