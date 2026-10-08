@@ -54,6 +54,8 @@
       };
 
   home-manager.users.tom = { lib, ... }: {
+    nixpkgs.config.allowUnfree = true;
+
     home.packages = with pkgs; [
       t3code
       playwright-mcp
@@ -71,6 +73,9 @@
       enable = true;
       settings = null;
       # package = inputs.codex-cli-nix.packages.${pkgs.system}.default;
+    };
+    programs.claude-code = {
+      enable = true;
     };
   };
 }
