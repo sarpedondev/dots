@@ -6,10 +6,22 @@
 }:
 let
   mavenIndexerSkill = "${pkgs.maven-indexer-cli.src}/skills/maven-indexer";
+  reaSkill = "${pkgs.rea-agents}/lib/node_modules/rea-agents/skills/reverse-engineer-anything";
   mcpServers = {
     idea.url = "http://127.0.0.1:64342/stream";
     context7.url = "https://mcp.context7.com/mcp";
     nuxt-ui.url = "https://ui.nuxt.com/mcp";
+
+    rea = {
+      command = "${pkgs.rea-agents}/bin/rea";
+      args = [ "mcp" ];
+      env = {
+        GHIDRA_INSTALL_DIR = "${pkgs.ghidra}/lib/ghidra";
+        JAVA_HOME = "${pkgs.zulu25}";
+        REA_ANALYSIS_PROVIDER = "ghidra";
+        REA_BROWSER_EXECUTABLE = "${pkgs.chromium}/bin/chromium";
+      };
+    };
 
     playwright = {
       command = "${pkgs.playwright-mcp}/bin/playwright-mcp";
@@ -65,10 +77,12 @@ in
       playwright-mcp
       chromium
       maven-indexer-cli
+      rea-agents
       bubblewrap
       opencode
     ];
     home.file.".agents/skills/maven-indexer".source = mavenIndexerSkill;
+    home.file.".agents/skills/reverse-engineer-anything".source = reaSkill;
     home.activation.createMavenIndexerStateDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       $DRY_RUN_CMD mkdir -p /home/tom/.maven-indexer-mcp
     '';
@@ -81,6 +95,7 @@ in
       enable = true;
       mutableSettings = true;
       skills.maven-indexer = mavenIndexerSkill;
+      skills.reverse-engineer-anything = reaSkill;
       mcpServers = lib.mapAttrs (
         _: server:
         server
