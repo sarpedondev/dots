@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "clawgod": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791761561,
+        "narHash": "sha256-hsBb4NHavRjJiK38SpkgMBb3NxnG7F+cTEF/t1oiQ/g=",
+        "owner": "0Chencc",
+        "repo": "clawgod",
+        "rev": "a1a91769f88a588a86e5f5c4083c787cd27950f2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0Chencc",
+        "repo": "clawgod",
+        "type": "github"
+      }
+    },
     "codex-cli-nix": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -210,6 +226,7 @@
     },
     "root": {
       "inputs": {
+        "clawgod": "clawgod",
         "codex-cli-nix": "codex-cli-nix",
         "disko": "disko",
         "home-manager": "home-manager",

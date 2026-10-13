@@ -24,6 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     codex-cli-nix.url = "github:sadjow/codex-cli-nix";
+    clawgod = {
+      url = "github:0Chencc/clawgod";
+      flake = false;
+    };
   };
 
   outputs =
@@ -38,6 +42,9 @@
         nixpkgs.overlays = [
           inputs.nur.overlays.default
           (import ./overlays/pkgs.nix)
+          (final: prev: {
+            clawgod = prev.callPackage ./overlays/clawgod.nix { clawgodSrc = inputs.clawgod; };
+          })
         ];
       };
     in

@@ -91,8 +91,10 @@ in
       settings = null;
       # package = inputs.codex-cli-nix.packages.${pkgs.system}.default;
     };
+    home.file.".clawgod/features.json".source = "${pkgs.clawgod}/share/clawgod/defaults/features.json";
     programs.claude-code = {
       enable = true;
+      package = pkgs.clawgod;
       mutableSettings = true;
       skills.maven-indexer = mavenIndexerSkill;
       skills.reverse-engineer-anything = reaSkill;
