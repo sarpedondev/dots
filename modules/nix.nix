@@ -24,31 +24,32 @@
     permittedInsecurePackages = [
       "electron-40.10.5"
     ];
-    programs.nix-ld = {
-      enable = true;
-      libraries = [
-        pkgs.libXcursor
-        pkgs.libXrandr
-        pkgs.libX11
-        pkgs.libXxf86vm
-        pkgs.libXi
-        pkgs.libXtst
-        pkgs.wayland
-        pkgs.libxkbcommon
-        pkgs.libglvnd
-        pkgs.bzip2
-        pkgs.gtk3
-        pkgs.curl
-        pkgs.openssl
-        pkgs.glibc
-        pkgs.glib
-        pkgs.file
-        pkgs.flite
-        pkgs.zbar
-        pkgs.fontconfig
-        pkgs.freetype
-        pkgs.dbus
-      ];
-    };
+  };
+  programs.nix-ld = {
+    enable = true;
+    libraries = [
+      pkgs.libXcursor
+      pkgs.libXrandr
+      pkgs.libX11
+      pkgs.libXxf86vm
+      pkgs.libXi
+      pkgs.libXtst
+      pkgs.wayland
+      pkgs.libxkbcommon
+      pkgs.libglvnd
+      pkgs.bzip2
+      pkgs.gtk3
+      pkgs.curl
+      pkgs.openssl
+      pkgs.glibc
+      pkgs.glib
+      pkgs.file
+      pkgs.flite
+      pkgs.zbar
+      pkgs.fontconfig
+      pkgs.freetype
+      pkgs.dbus
+      pkgs.vulkan-loader
+    ];
   };
 }
