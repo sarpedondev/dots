@@ -73,21 +73,29 @@ in
     nixpkgs.config.allowUnfree = true;
 
     home.packages = with pkgs; [
-      t3code
+      #t3code
       playwright-mcp
       chromium
       maven-indexer-cli
       rea-agents
       bubblewrap
-      opencode
     ];
     home.file.".agents/skills/maven-indexer".source = mavenIndexerSkill;
     home.file.".agents/skills/reverse-engineer-anything".source = reaSkill;
     home.activation.createMavenIndexerStateDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       $DRY_RUN_CMD mkdir -p /home/tom/.maven-indexer-mcp
     '';
-    programs.codex = {
+    programs.opencode = {
       enable = true;
+      mutableSettings = true;
+      settings.mcp.rea = {
+        type = "local";
+        command = [ mcpServers.rea.command ] ++ mcpServers.rea.args;
+        environment = mcpServers.rea.env;
+      };
+    };
+    programs.codex = {
+      enable = false;
       settings = null;
       # package = inputs.codex-cli-nix.packages.${pkgs.system}.default;
     };

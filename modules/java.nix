@@ -1,8 +1,9 @@
 { pkgs, ... }:
 let
   additionalJDKs = with pkgs; [
-    zulu8
-    zulu11
+    # JDKs < 17 pull in gtk2 with gtkSupport, which nixpkgs marks broken
+    (zulu8.override { gtkSupport = false; })
+    (zulu11.override { gtkSupport = false; })
     zulu17
     (pkgs.zulu.override { enableJavaFX = true; })
   ];

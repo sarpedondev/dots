@@ -57,6 +57,7 @@ in
             (bind "SUPER + W" ''hl.dsp.window.float({ action = "toggle" })'')
             (bind "ALT + space" ''hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" })'')
             (bind "SUPER + T" ''hl.dsp.exec_cmd("kitty")'')
+            (bind "SUPER + F9" ''hl.dsp.dpms({ action = "toggle" })'')
             (bind "Print" ''hl.dsp.exec_cmd("grimblast --freeze copy area")'')
             (bind "SUPER + SHIFT + S" ''hl.dsp.exec_cmd("grimblast --notify --freeze --filetype png copysave area \"/home/tom/Pictures/Screenshots/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png\"")'')
             (bind "SUPER + V" ''hl.dsp.exec_cmd("pkill -x rofi || TODO clipboard")'')
