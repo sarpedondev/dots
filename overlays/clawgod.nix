@@ -12,11 +12,11 @@
   clawgodSrc,
 }:
 let
-  claudeVersion = "2.1.296";
+  claudeVersion = "2.1.325";
 
   native = fetchurl {
     url = "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-x64/-/claude-code-linux-x64-${claudeVersion}.tgz";
-    hash = "sha256-7vWi4rCaXn0s54TRs7ozWuf8bH9iVsgCoOvywh5P0OE=";
+    hash = "sha512-BqZzMvP/zgLLL34S+7OzbG+cyoFp7gwWHU5koVwsyMlTAz+0zZAmbY+UkzvtN2RXxp6AcMenbYIjQJxoXfUY3w==";
   };
 
   fakeNpm = writeShellScriptBin "npm" ''

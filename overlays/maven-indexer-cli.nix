@@ -6,16 +6,16 @@
 
 buildNpmPackage rec {
   pname = "maven-indexer-cli";
-  version = "5131095497afda9f6f58a24ec6daa0173c1b9077";
+  version = "e80634b7ed08104b69c870146fea3f98678701ce";
 
   src = fetchFromGitHub {
     owner = "tangcent";
     repo = "maven-indexer-cli";
     rev = "${version}";
-    hash = "sha256-76ZrLcRQtnNd/VOphC86h9yElK1mv553pcp/Up05Yu0=";
+    hash = "sha256-a+BbDLt4oCeJfMUf83bpV+y40GHZ+k1d0dsdTObo0Cw=";
   };
 
-  npmDepsHash = "sha256-bTbtT5XHDJSbsN2cE3BAo0i5YWbja68U1yT98S73LVA=";
+  npmDepsHash = "sha256-a1jHPc5XvhTU9y9Di47GRbwqR5Bh1vP6PokeTK0HxL0=";
 
   npmBuildScript = "build";
 
