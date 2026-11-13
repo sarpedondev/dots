@@ -66,40 +66,21 @@ set_claude_version() {
     "$file"
 }
 
-# clawgod lags behind Claude Code releases, so pick the newest version it can patch
+# clawgod lags behind Claude Code releases; its daily CI publishes the version it verified
 update_claude() {
   local file=overlays/clawgod.nix
-  local meta current
-  meta=$(curl -fsSL https://registry.npmjs.org/@anthropic-ai/claude-code-linux-x64)
+  local version current hash
+  version=$(curl -fsSL https://raw.githubusercontent.com/0Chencc/clawgod/badges/claude-version.json | jq -r .message)
   current=$(sed -n 's/^  claudeVersion = "\(.*\)";/\1/p' "$file")
-  local current_hash
-  current_hash=$(sed -n '/claude-code-linux-x64-/{n;s/.*hash = "\(.*\)";/\1/p}' "$file")
 
-  local candidates
-  candidates=$(jq -r '.versions | keys[]' <<<"$meta" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' \
-    | sort -V | awk -v cur="$current" 'found; $0 == cur { found = 1 }' | sort -rV | head -n 8)
-
-  if [[ -z "$candidates" ]]; then
-    echo "claude-code is up to date ($current)"
+  if [[ "$version" == "$current" ]]; then
+    echo "claude-code is up to date ($current, verified by clawgod)"
     return
   fi
+  echo "claude-code: $current -> $version"
 
-  local expr="let flake = builtins.getFlake (toString ./.); pkgs = import flake.inputs.nixpkgs { };"
-  expr+=" in pkgs.callPackage ./${file} { clawgodSrc = flake.inputs.clawgod; }"
-
-  local version hash
-  for version in $candidates; do
-    hash=$(jq -r --arg v "$version" '.versions[$v].dist.integrity' <<<"$meta")
-    set_claude_version "$file" "$version" "$hash"
-    echo "claude-code: trying $version with clawgod ..."
-    if nix build --impure --no-link --expr "$expr" >/dev/null 2>&1; then
-      echo "claude-code: $current -> $version"
-      return
-    fi
-  done
-
-  set_claude_version "$file" "$current" "$current_hash"
-  echo "claude-code: clawgod supports none of the newer versions, staying on $current"
+  hash=$(curl -fsSL "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-x64/${version}" | jq -r .dist.integrity)
+  set_claude_version "$file" "$version" "$hash"
 }
 
 update_maven_indexer() {
