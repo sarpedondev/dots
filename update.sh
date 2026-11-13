@@ -58,25 +58,48 @@ update_rea() {
   set_npm_deps_hash "$file"
 }
 
+set_claude_version() {
+  local file=$1 version=$2 hash=$3
+  sed -i \
+    -e "s|^  claudeVersion = \".*\";|  claudeVersion = \"${version}\";|" \
+    -e "/claude-code-linux-x64-\${claudeVersion}.tgz\";/{n;s|hash = \".*\";|hash = \"${hash}\";|}" \
+    "$file"
+}
+
+# clawgod lags behind Claude Code releases, so pick the newest version it can patch
 update_claude() {
   local file=overlays/clawgod.nix
-  local meta version current
-  meta=$(curl -fsSL https://registry.npmjs.org/@anthropic-ai/claude-code-linux-x64/latest)
-  version=$(jq -r .version <<<"$meta")
+  local meta current
+  meta=$(curl -fsSL https://registry.npmjs.org/@anthropic-ai/claude-code-linux-x64)
   current=$(sed -n 's/^  claudeVersion = "\(.*\)";/\1/p' "$file")
+  local current_hash
+  current_hash=$(sed -n '/claude-code-linux-x64-/{n;s/.*hash = "\(.*\)";/\1/p}' "$file")
 
-  if [[ "$version" == "$current" ]]; then
+  local candidates
+  candidates=$(jq -r '.versions | keys[]' <<<"$meta" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' \
+    | sort -V | awk -v cur="$current" 'found; $0 == cur { found = 1 }' | sort -rV | head -n 8)
+
+  if [[ -z "$candidates" ]]; then
     echo "claude-code is up to date ($current)"
     return
   fi
-  echo "claude-code: $current -> $version"
 
-  local src_hash
-  src_hash=$(jq -r .dist.integrity <<<"$meta")
-  sed -i \
-    -e "s|^  claudeVersion = \".*\";|  claudeVersion = \"${version}\";|" \
-    -e "/claude-code-linux-x64-\${claudeVersion}.tgz\";/{n;s|hash = \".*\";|hash = \"${src_hash}\";|}" \
-    "$file"
+  local expr="let flake = builtins.getFlake (toString ./.); pkgs = import flake.inputs.nixpkgs { };"
+  expr+=" in pkgs.callPackage ./${file} { clawgodSrc = flake.inputs.clawgod; }"
+
+  local version hash
+  for version in $candidates; do
+    hash=$(jq -r --arg v "$version" '.versions[$v].dist.integrity' <<<"$meta")
+    set_claude_version "$file" "$version" "$hash"
+    echo "claude-code: trying $version with clawgod ..."
+    if nix build --impure --no-link --expr "$expr" >/dev/null 2>&1; then
+      echo "claude-code: $current -> $version"
+      return
+    fi
+  done
+
+  set_claude_version "$file" "$current" "$current_hash"
+  echo "claude-code: clawgod supports none of the newer versions, staying on $current"
 }
 
 update_maven_indexer() {
