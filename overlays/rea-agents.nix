@@ -10,21 +10,21 @@
 let
   # The published archive includes the compiled runtime and matching skill.
   lockfile = fetchurl {
-    url = "https://raw.githubusercontent.com/morluto/rea/a56f7bb668ab23fec8d33f7af353ac7ed2fe1895/package-lock.json";
-    hash = "sha256-tlXiEYl71yAy72kmG+hxDlA3se3neBBsj+9zAwetAFk=";
+    url = "https://raw.githubusercontent.com/morluto/rea/rea-agents-6.9.0/package-lock.json";
+    hash = "sha256-PLzox45vpKtpYY3PmifqHzRnC8FmTqd3/XmTkB4IoWM=";
   };
 in
 buildNpmPackage rec {
   pname = "rea-agents";
-  version = "6.4.0";
+  version = "6.9.0";
 
   src = fetchurl {
     url = "https://registry.npmjs.org/rea-agents/-/rea-agents-${version}.tgz";
-    hash = "sha256-WesWBLjbdfUi1Kl1w2zmtKKtRl5DutFl+aj3KDkdubg=";
+    hash = "sha512-KqDn1UR5BMqHoQ3MGAnPuWiSKwgdFaz1L/uUNgrKt+1W8kPtgYP8AWEOXIF1lDIOBVyPuYIIst2iamo1Wf3r8g==";
   };
 
   nodejs = nodejs_24;
-  npmDepsHash = "sha256-swbjGsWX/zoQXgR2F5R22Ff8qedS4ZHCz67QBf7phaE=";
+  npmDepsHash = "sha256-6hRmFRsPY6U5O0tpwA3mAUZIic5cO+M/kAs326Q3lNI=";
   dontNpmBuild = true;
   npmInstallFlags = [ "--omit=dev" ];
   npmRebuildFlags = [ "--ignore-scripts" ];

@@ -82,6 +82,7 @@
       scrcpy
 
       trezor-suite
+      anydesk
     ];
   };
   services.teamviewer.enable = true;
