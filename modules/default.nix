@@ -19,6 +19,7 @@
     ./cliphist.nix
     ./librewolf.nix
     ./docker.nix
+    ./waydroid.nix
     ./git.nix
     ./bluetooth.nix
     ./printing.nix

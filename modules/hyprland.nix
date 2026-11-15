@@ -279,11 +279,20 @@ in
             };
           };
 
-          window_rule = {
-            name = "fixintellij";
-            match.class = "jetbrains-idea";
-            no_initial_focus = true;
-          };
+          window_rule = [
+            {
+              name = "fixintellij";
+              match.class = "jetbrains-idea";
+              no_initial_focus = true;
+            }
+            {
+              name = "waydroid-float";
+              match.class = "^([Ww]aydroid.*)$";
+              float = true;
+              center = true;
+              size = "1280 720";
+            }
+          ];
         };
       };
     };
