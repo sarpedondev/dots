@@ -17,6 +17,24 @@ let
       flags
     ];
   };
+
+  waydroidDamageTracking = event: {
+    _args = [
+      event
+      (lua ''
+        function(window)
+          local closing = ${if event == "window.destroy" then "window and window.address" else "nil"}
+          local waydroid = false
+          for _, w in ipairs(hl.get_windows()) do
+            if w.address ~= closing and (w.class or ""):lower():find("^waydroid") then
+              waydroid = true
+            end
+          end
+          hl.config({ debug = { damage_tracking = waydroid and 1 or 2 } })
+        end
+      '')
+    ];
+  };
 in
 {
   options = {
@@ -39,18 +57,23 @@ in
         systemd.enable = false;
 
         settings = {
-          on = {
-            _args = [
-              "hyprland.start"
-              (lua ''
-                function()
-                  hl.exec_cmd("waybar")
-                  hl.exec_cmd("hyprlauncher -d")
-                  hl.exec_cmd("1password --silent")
-                end
-              '')
-            ];
-          };
+          on = [
+            {
+              _args = [
+                "hyprland.start"
+                (lua ''
+                  function()
+                    hl.exec_cmd("waybar")
+                    hl.exec_cmd("hyprlauncher -d")
+                    hl.exec_cmd("1password --silent")
+                  end
+                '')
+              ];
+            }
+            (waydroidDamageTracking "window.open")
+            (waydroidDamageTracking "window.class")
+            (waydroidDamageTracking "window.destroy")
+          ];
 
           bind = [
             (bind "SUPER + Q" "hl.dsp.window.close()")
@@ -276,8 +299,7 @@ in
 
             xwayland = {
               force_zero_scaling = true;
-            };
-          };
+            };          };
 
           window_rule = [
             {

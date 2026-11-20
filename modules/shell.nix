@@ -57,6 +57,7 @@
         edit = "sudo -e";
         merge-into-prod = "git checkout prod && git pull && git merge develop && git push && git checkout develop";
         merge-into-develop = "git checkout develop && git pull && git merge prod && git push && git checkout prod";
+        merge-all = "git checkout alpha && git pull && git merge develop && git push && git checkout beta && git pull && git merge alpha && git push && git checkout prod && git pull && git merge beta && git push && git checkout develop";
         update = "sudo nixos-rebuild switch";
         kill-intellij = "pkill -f idea-ultimate";
         nuke = "pkill -f";

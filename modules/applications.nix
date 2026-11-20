@@ -13,6 +13,7 @@
       openssl
       cfr
       stripe-cli
+      #     inputs.claude-desktop-nix.packages.x86_64-linux.default
       devenv
 
       eog

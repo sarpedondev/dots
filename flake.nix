@@ -28,6 +28,7 @@
       url = "github:0Chencc/clawgod";
       flake = false;
     };
+    claude-desktop-nix.url = "github:tomsch/claude-desktop-nix";
   };
 
   outputs =
