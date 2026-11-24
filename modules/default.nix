@@ -34,5 +34,6 @@
     ./mullvad.nix
     ./codex.nix
     ./sops
+    ./server-backup
   ];
 }

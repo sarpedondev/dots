@@ -11,6 +11,8 @@ let
     idea.url = "http://127.0.0.1:64342/stream";
     context7.url = "https://mcp.context7.com/mcp";
     nuxt-ui.url = "https://ui.nuxt.com/mcp";
+    scalable-capital.url = "https://mcp.scalable.capital/mcp";
+    norman-finance.url = "https://mcp.norman.finance/mcp";
 
     rea = {
       command = "${pkgs.rea-agents}/bin/rea";
