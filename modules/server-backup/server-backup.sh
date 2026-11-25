@@ -63,12 +63,18 @@ confirm() {
 }
 
 restore_snapshot() {
-  local directory="$1" label="$2"
-  shift 2
+  local directory="$1" label="$2" filtered="$3"
+  shift 3
   local size available
 
   size="$(restic_read stats --json --quiet --mode restore-size "$@" | jq '.total_size')"
   available="$(df --output=avail --block-size=1 "$directory" | tail -n 1)"
+
+  if [ "$filtered" = yes ]; then
+    printf '%s: at most %s to download (filtered), %s free in %s\n' \
+      "$label" "$(human_bytes "$size")" "$(human_bytes "$available")" "$directory"
+    return
+  fi
 
   printf '%s: %s to download, %s free in %s\n' \
     "$label" "$(human_bytes "$size")" "$(human_bytes "$available")" "$directory"
@@ -97,11 +103,12 @@ run_restore() {
 
   connect
 
-  local snapshot
+  local snapshot filtered=no
   local -a args
+  [ $# -gt 0 ] && filtered=yes
   for snapshot in "${snapshots[@]}"; do
     read -r -a args <<< "$snapshot"
-    restore_snapshot "$directory" "$snapshot" "${args[@]}"
+    restore_snapshot "$directory" "$snapshot" "$filtered" "${args[@]}"
   done
   confirm "Download and decrypt into $directory?" || exit 0
 

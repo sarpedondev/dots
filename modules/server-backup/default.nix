@@ -13,6 +13,11 @@ let
     "password"
   ];
   secretName = field: "server-backup/${field}";
+
+  fusermountCompat = pkgs.runCommand "fusermount-compat" { } ''
+    mkdir -p $out/bin
+    ln -s /run/wrappers/bin/fusermount3 $out/bin/fusermount
+  '';
 in
 {
   sops.secrets = lib.genAttrs (map secretName fields) (_: {
@@ -24,6 +29,7 @@ in
       name = "server-backup";
       runtimeInputs = with pkgs; [
         coreutils
+        fusermountCompat
         jq
         openssh
         restic
